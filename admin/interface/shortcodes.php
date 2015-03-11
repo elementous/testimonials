@@ -17,6 +17,11 @@ $settings = mts_testimonials_get_settings();
 		<a href="<?php echo $mts_testimonials->shortcode_generator->get_add_new_shortcode_url(); ?>" class="button button-secondary"><?php _e('Add new shortcode', 'elm'); ?></a>
 	</div>
 	
+	<?php
+	$shortcodes = $mts_testimonials->shortcode_generator->get_shortcode_list();
+			
+	if ( !empty( $shortcodes ) ) {
+	?>
 	<table class="wp-list-table widefat fixed">
 		<thead>
 			<tr>
@@ -45,12 +50,9 @@ $settings = mts_testimonials_get_settings();
 				</th>
 			</tr>
 		</tfoot>
-				
-		<tbody>
-			<?php
-			$shortcodes = $mts_testimonials->shortcode_generator->get_shortcode_list();
 			
-			if ( !empty( $shortcodes ) ) {
+		<tbody>
+		<?php
 				$count = 0;
 				foreach ( $shortcodes as $shortcode_index => $shortcode ) :
 					$count++;
@@ -70,9 +72,14 @@ $settings = mts_testimonials_get_settings();
 				</tr>
 				<?php
 				endforeach;
-			}
-			?>
+		?>
 		</tbody>
 	</table>
-
+	<?php
+	} else {
+	?>
+		<p><?php _e('No shortcodes. You can add new.', 'mts'); ?></p>
+	<?php
+	}
+	?>
 </div>

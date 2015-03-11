@@ -85,6 +85,8 @@ class MTS_Testimonials_Shortcode_Generator {
 	 *
      */
 	function get_shortcode_list() {
+		$shortcodes = array();
+	
 		$shortcodes = get_option( 'mts_testimonials_shortcodes' );
 		
 		if ( is_array( $shortcodes ) )
