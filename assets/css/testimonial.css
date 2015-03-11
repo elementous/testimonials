@@ -1,0 +1,502 @@
+body {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+a {
+text-decoration:none;
+color:#45b0ee;
+}
+
+li {
+list-style-type:none;
+}
+
+.container {
+width:770px;
+max-width:100%;
+float:none;
+background:#fff;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+overflow:hidden;
+margin:0 auto;
+padding:0 40px 60px;
+}
+
+.large-container {
+width:1040px;
+max-width:100%;
+float:none;
+background:#fff;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+overflow:hidden;
+margin:40px auto 0;
+padding:40px;
+}
+
+.container1 {
+width:47%;
+margin-right:6%;
+float:left;
+}
+
+#last {
+margin-right:0;
+}
+
+.container1 .quotes {
+width:100%;
+font-style:italic;
+color:#525252;
+position:relative;
+line-height:2;
+font-weight:100;
+float:left;
+}
+
+.container1 .quotes i {
+margin-right:5px;
+font-size:32px;
+color:rgba(51,51,51,0.2);
+}
+
+.container1-right {
+width:100%;
+float:left;
+margin-top:15px;
+}
+
+.container1-right img {
+float:left;
+margin-right:20px;
+border-radius:50%;
+}
+
+.author_wrap {
+float:left;
+margin-top:2px;
+}
+
+.author-name,.author-work,.rating {
+padding-top:3px;
+}
+
+.rating {
+color:#FFD700;
+}
+
+.content2 .quotes {
+margin-top:20px;
+}
+
+.content3 {
+width:100%;
+margin-right:0;
+margin-bottom:20px;
+}
+
+.content3 .container1-right {
+width:auto;
+margin-right:15px;
+}
+
+.content3 .quotes {
+width:auto;
+float:none;
+}
+
+.content3 .container1-right img {
+margin-right:0;
+margin-bottom:15px;
+}
+
+.content4 .quotes {
+text-align:center;
+float:none;
+}
+
+.style-1,.style-2 {
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+margin-right:6%;
+}
+
+.content5 .quotes,.content6 .quotes {
+background:#bc645b;
+color:#fff;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+margin-bottom:0;
+position:relative;
+padding:20px;
+}
+
+.content6 .quotes {
+background:#f5f5f5;
+color:#525252;
+border-radius:5px;
+}
+
+.style-3 .quotes,.style-7 .quotes {
+width:83%;
+float:left;
+padding-bottom:69px;
+}
+
+.style-2 .quotes {
+margin-top:0;
+}
+
+.style-1 .quotes:after,.style-5 .quotes:after {
+content:'';
+position:absolute;
+display:block;
+width:0;
+z-index:1;
+bottom:-10px;
+color:transparent;
+left:25px;
+border-color:#bc645b transparent;
+border-style:solid;
+border-width:10px 10px 0;
+}
+
+.style-3 .quotes:after,.style-7 .quotes:after {
+content:'';
+position:absolute;
+display:block;
+width:0;
+z-index:1;
+margin-top:-10px;
+left:-10px;
+top:30px;
+color:transparent;
+border-color:transparent #bc645b;
+border-style:solid;
+border-width:10px 10px 10px 0;
+}
+
+.style-7 .quotes:after {
+border-color:transparent #f5f5f5;
+}
+
+.style-1 .container1-right,.style-2 .container1-right {
+margin-top:0;
+padding-top:15px;
+background:#f2eae1;
+padding-left:15px;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+padding-bottom:15px;
+}
+
+.style-2 .quotes:after,.style-6 .quotes:after {
+content:'';
+position:absolute;
+display:block;
+width:0;
+z-index:1;
+top:-10px;
+color:transparent;
+left:25px;
+border-color:#bc645b transparent;
+border-style:solid;
+border-width:0 10px 10px;
+}
+
+.style-3 .container1-right,.style-7 .container1-right {
+width:17%;
+background:#f2eae1;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+text-align:center;
+padding:14px 14px 22px;
+}
+
+.style-3 .container1-right img,.style-7 .container1-right img {
+margin-right:0;
+float:none;
+text-align:center;
+}
+
+.style-4 .quotes:after,.style-8 .quotes:after {
+content:'';
+position:absolute;
+display:block;
+width:0;
+z-index:1;
+bottom:-10px;
+color:transparent;
+left:46%;
+border-color:#bc645b transparent;
+border-style:solid;
+border-width:10px 10px 0;
+}
+
+.style-4 .container1-right,.style-8 .container1-right {
+margin-top:0;
+background:#f2eae1;
+text-align:center;
+padding-top:20px;
+padding-bottom:20px;
+}
+
+.style-4 .container1-right img,.style-8 .container1-right img {
+text-align:center;
+float:none;
+margin-right:0;
+}
+
+.style-5 {
+margin-right:6%;
+}
+
+.style-11 .container1-right {
+padding-left:10px;
+}
+
+.style-12 {
+width:47%;
+}
+
+.style-12 .container1-right {
+width:35%;
+padding-bottom:128px;
+}
+
+.style-12 .quotes {
+width:65%;
+padding-bottom:43px;
+}
+
+.style-13 .container1-right img {
+float:none;
+margin-right:0;
+}
+
+.style-14 .quotes:after {
+display:none;
+}
+
+.style-14 .container1-right {
+padding-left:30px;
+}
+
+.testimonial-slider-container,.testimonial-fade-slider-container {
+clear:both;
+}
+
+.testimonial-slider-container .owl-carousel .owl-item img {
+width:auto;
+}
+
+.testimonial-slider .container1 {
+width:96%;
+}
+
+.testimonial-slider .container1-right {
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+padding-left:20px;
+}
+
+.testimonial-slider .container1-right img {
+border-radius:50%;
+width:75px;
+height:75px;
+text-align:left;
+float:left;
+margin-right:30px;
+}
+
+.testimonial-slider .author_wrap {
+float:left;
+text-align:left;
+}
+
+.testimonial_wrap {
+float:left;
+margin-bottom:150px;
+}
+
+.testimonials {
+height:200px;
+position:relative;
+}
+
+.testimonials-2 {
+height:200px;
+position:relative;
+margin-top:100px;
+}
+
+.testimonials-3 {
+width:50%;
+float:left;
+height:250px;
+position:relative;
+margin-top:0;
+background:#0274be;
+}
+
+.mts-testimonial,.mts-testimonial-2,.mts-testimonial-3 {
+position:absolute;
+width:100%;
+top:0;
+left:0;
+-moz-transition:all .7s ease-in-out;
+-webkit-transition:all .7s ease-in-out;
+transition:all .7s ease-in-out;
+opacity:0;
+}
+
+.mts-testimonial-3 {
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+height:100%;
+padding:25px;
+}
+
+.mts-testimonial p,.mts-testimonial-2 p,.mts-testimonial-3 p {
+font-size:20px;
+font-weight:400;
+text-align:center;
+line-height:1.7;
+margin:25px 0 20px;
+}
+
+.mts-testimonial-3 p {
+color:#fff;
+font-size:18px;
+margin:0;
+}
+
+.mts-testimonial-3 p.testi-author {
+margin-top:10px;
+}
+
+.testi-author {
+font-size:16px;
+display:block;
+margin-top:10px;
+color:#8F8C8C;
+}
+
+.testimonials-authors,.testimonials-authors-2,.testimonials-authors-3 {
+float:left;
+width:100%;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-moz-box-sizing:border-box;
+background:#0274be;
+margin:0;
+padding:0;
+}
+
+.testimonials-authors-3 {
+width:50%;
+float:right;
+position:relative;
+}
+
+.testimonials-authors li,.testimonials-authors-2 li {
+float:left;
+-moz-transition:all .7s ease-in-out;
+-webkit-transition:all .7s ease-in-out;
+transition:all .7s ease-in-out;
+opacity:0.5;
+cursor:pointer;
+margin-bottom:-4px;
+}
+
+.testimonials-authors-3 li {
+float:left;
+-moz-transition:all .7s ease-in-out;
+-webkit-transition:all .7s ease-in-out;
+transition:all .7s ease-in-out;
+cursor:pointer;
+margin-bottom:-4px;
+}
+
+.testimonials-authors-3 li img {
+opacity:0.5;
+}
+
+.testimonial-hover {
+position:absolute;
+width:94px;
+height:100px;
+left:0;
+top:0;
+-moz-transition:all .7s ease-in-out;
+-webkit-transition:all .7s ease-in-out;
+transition:all .7s ease-in-out;
+}
+
+.testimonials-authors-3 .testi-author-3 {
+position:absolute;
+bottom:-52px;
+left:0;
+opacity:0;
+color:#fff;
+font-size:18px;
+text-align:center;
+width:100%;
+padding-top:15px;
+padding-bottom:15px;
+background:#333;
+pointer-events:none;
+-moz-transition:all .2s linear;
+-webkit-transition:all .2s linear;
+transition:all .2s linear;
+margin:0;
+}
+
+.main-container,.style-3,.style-7,.testimonial-fade-slider .container1 {
+width:100%;
+}
+
+.content3 .author_wrap,.content4 .author_wrap,.style-3 .author_wrap,.style-7 .author_wrap,.style-4 .author_wrap,.style-8 .author_wrap {
+float:none;
+}
+
+.content4 .container1-right,.style-4 .quotes,.style-8 .quotes {
+text-align:center;
+}
+
+.style-5 .quotes:after,.style-6 .quotes:after,.style-8 .quotes:after {
+border-color:#f5f5f5 transparent;
+}
+
+.style-7 .container1-right,.style-8 .container1-right,.style-14 .quotes {
+background:#fff;
+}
+
+.testimonials-authors li:hover,.testimonials-authors-2 li:hover,.testimonials-authors-3 li:hover img {
+opacity:1;
+}
+
+.mts-success {
+	color: green;
+}
+
+.mts-error {
+	color: red;
+}

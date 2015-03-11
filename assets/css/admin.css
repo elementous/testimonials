@@ -1,0 +1,46 @@
+/**
+ * Testimonials
+ *
+ * Author: Elementous
+*/
+#mts-testimonials-cf-meta-box input[type="text"]{
+	width: 40%;
+}
+
+#add-new-shortcode {
+	margin: 10px 0 10px 0;
+}
+
+#your-shortcode {
+	background: #E1E1E1; 
+	padding: 10px;
+}
+
+#shortcode-live-preview {
+	width: 100%;
+	float: left;
+}
+
+#shortcode-live-preview-note {
+	width: 100%;
+	float: left;
+}
+
+.width-40 {
+	width: 40px;
+}
+
+.delete-image {
+	margin: 5px 0 0 0;
+}
+
+.your-shortcode, .live-preview {
+	font-weight: bold;
+}
+
+.mts-loading {
+	width: 128px;
+	height: 15px;
+	background: url('../img/ajax-loader.gif');
+	margin: 20px 0 20px 0;
+}
