@@ -89,7 +89,8 @@ class MTS_Testimonials {
             'has_archive' => false,
             'supports' => array(
                  'title', 'editor', 'custom-fields'
-            ) 
+            ),
+			'menu_icon' => MTS_TESTIMONIALS_URL . '/assets/img/testimonials.png'
         ) );
     }
 	

@@ -399,7 +399,7 @@ class MTS_Testimonials_Admin {
      * Menu
      */
 	function menu() {
-        add_menu_page( __( 'General', 'mts' ), __( 'Testimonials', 'mts' ), 'manage_options', 'mts_testimonials', array( $this, 'settings_general_content' ), null );
+        add_menu_page( __( 'General', 'mts' ), __( 'Testimonials', 'mts' ), 'manage_options', 'mts_testimonials', array( $this, 'settings_general_content' ), MTS_TESTIMONIALS_URL . '/assets/img/plugin-icon.png' );
 		add_submenu_page( null, __( 'Forms', 'mts' ), __( 'Forms', 'mts' ), 'manage_options', 'mts_testimonials_forms', array( $this, 'settings_forms_content' ), null );
 		add_submenu_page( null, __( 'Shortcodes', 'mts' ), __( 'Shortcodes', 'mts' ), 'manage_options', 'mts_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
 		add_submenu_page( null, __( 'Add New Shortcode', 'mts' ), __( 'Add New Shortcode', 'mts' ), 'manage_options', 'mts_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
