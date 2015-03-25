@@ -5,10 +5,10 @@
   *
   * @return array
 */
-function mts_testimonials_get_settings() {
-	global $mts_testimonials_admin;
+function elm_testimonials_get_settings() {
+	global $elm_testimonials_admin;
 
-	$settings = $mts_testimonials_admin->get_settings( true );
+	$settings = $elm_testimonials_admin->get_settings( true );
 	
 	return $settings;
 }
@@ -19,7 +19,7 @@ function mts_testimonials_get_settings() {
   * @param integer $rating
   * @return void
 */
-function mts_testimonials_get_rating_html( $rating ) {
+function elm_testimonials_get_rating_html( $rating ) {
 	$output = '';
 
 	for ( $i = 1; $i <= $rating; $i++ ) {
@@ -37,13 +37,13 @@ function mts_testimonials_get_rating_html( $rating ) {
   * @param integer $order_by order by
   * @return void
 */
-function mts_get_testimonial( $id, $status, $order_by = 'DESC' ) {
+function elm_get_testimonial( $id, $status, $order_by = 'DESC' ) {
 	global $wpdb;
 	
 	if ( $id != 'all' ) :
-		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE ID = {$id} AND post_type = 'mts_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
+		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE ID = {$id} AND post_type = 'elm_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
 	else :
-		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE post_type = 'mts_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
+		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE post_type = 'elm_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
 	endif;
 	
 	return $rows;

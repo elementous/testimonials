@@ -5,9 +5,9 @@
  *
  * @return array
 */
-function mts_admin_get_layout_options() {
+function elm_admin_get_layout_options() {
 	$options = array(
-		'simple_grid' => __('Simple grid', 'mts')
+		'simple_grid' => __('Simple grid', 'elm')
 	);
 	
 	return $options;
@@ -18,10 +18,10 @@ function mts_admin_get_layout_options() {
  *
  * @return array
 */
-function mts_admin_get_show_image_options() {
+function elm_admin_get_show_image_options() {
 	$options = array(
-		1 => __('Yes', 'mts'),
-		0 => __('No', 'mts')
+		1 => __('Yes', 'elm'),
+		0 => __('No', 'elm')
 	);
 	
 	return $options;
@@ -32,10 +32,10 @@ function mts_admin_get_show_image_options() {
  *
  * @return array
 */
-function mts_admin_get_show_rating_options() {
+function elm_admin_get_show_rating_options() {
 	$options = array(
-		1 => __('Yes', 'mts'),
-		0 => __('No', 'mts')
+		1 => __('Yes', 'elm'),
+		0 => __('No', 'elm')
 	);
 	
 	return $options;
@@ -46,10 +46,10 @@ function mts_admin_get_show_rating_options() {
  *
  * @return array
 */
-function mts_admin_get_order_by_options() {
+function elm_admin_get_order_by_options() {
 	$options = array(
-		'asc' => __('ASC', 'mts'),
-		'desc' => __('DESC', 'mts')
+		'asc' => __('ASC', 'elm'),
+		'desc' => __('DESC', 'elm')
 	);
 	
 	return $options;

@@ -1,43 +1,37 @@
-/**
- * Testimonials back-end script
- * This file contains functions such as testimonial photo upload and shortcode live preview.
- *
- * Author: Elementous
-*/
 jQuery(document).ready(function(){
-	mts_testimonials_media_uploader();
+	elm_testimonials_media_uploader();
 	
-	mts_testimonials_live_preview();
+	elm_testimonials_live_preview();
 });
 
 /**
  * Testimonial live preview
 */
-function mts_testimonials_live_preview() {
+function elm_testimonials_live_preview() {
 	jQuery('.live-preview').hide();
 
 	jQuery('input[name="name"]').keyup(function() {
 		var name = jQuery( 'input[name="name"]' ).val();
 		
-		jQuery('.mts_testimonial_sc_name').html(name);
+		jQuery('.elm_testimonial_sc_name').html(name);
 	});
 	
 	// Handle selects
 	jQuery('select[name="layout"], select[name="show_image"], select[name="show_rating"], select[name="order_by"]').change(function() {
 		jQuery('.live-preview').show();
 		
-		var nonce = jQuery( 'input[name="mts_add_new_shortcode_page_nonce"]' ).val();
+		var nonce = jQuery( 'input[name="elm_add_new_shortcode_page_nonce"]' ).val();
 		var live_preview_div = jQuery( '#shortcode-live-preview' );
 		
 		// Display AJAX loader
-		live_preview_div.html('<div class="mts-loading"></div>');
+		live_preview_div.html('<div class="elm-loading"></div>');
 		
 		 var data = {
-				action: 'mts_testimonial_live_preview',
+				action: 'elm_testimonial_live_preview',
 				nonce: nonce
 		};
 	
-		var shortcode_atts = mts_testimonials_shortcode_atts();
+		var shortcode_atts = elm_testimonials_shortcode_atts();
 		var atts = jQuery.extend({}, shortcode_atts);
 		
 		var merged_data = jQuery.extend(data, atts);
@@ -51,18 +45,18 @@ function mts_testimonials_live_preview() {
 	jQuery('input[name="color"], input[name="category"]').keyup(function() {
 		jQuery('.live-preview').show();
 		
-		var nonce = jQuery( 'input[name="mts_add_new_shortcode_page_nonce"]' ).val();
+		var nonce = jQuery( 'input[name="elm_add_new_shortcode_page_nonce"]' ).val();
 		var live_preview_div = jQuery( '#shortcode-live-preview' );
 		
 		// Display AJAX loader
-		live_preview_div.html('<div class="mts-loading"></div>');
+		live_preview_div.html('<div class="elm-loading"></div>');
 		
 		 var data = {
-				action: 'mts_testimonial_live_preview',
+				action: 'elm_testimonial_live_preview',
 				nonce: nonce
 		};
 	
-		var shortcode_atts = mts_testimonials_shortcode_atts();
+		var shortcode_atts = elm_testimonials_shortcode_atts();
 		var atts = jQuery.extend({}, shortcode_atts);
 		
 		var merged_data = jQuery.extend(data, atts);
@@ -76,7 +70,7 @@ function mts_testimonials_live_preview() {
 /**
  * Setup testimonial live preview args
 */
-function mts_testimonials_shortcode_atts() {
+function elm_testimonials_shortcode_atts() {
 	var atts = [];
 
 	var color = jQuery( 'input[name="color"]' ).val();
@@ -100,7 +94,7 @@ function mts_testimonials_shortcode_atts() {
 /**
  * Testimonial photo upload
 */
-function mts_testimonials_media_uploader() {
+function elm_testimonials_media_uploader() {
 	var uploadID = '';
 
 	jQuery('.upload-button').click(function() {

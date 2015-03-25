@@ -1,8 +1,8 @@
 <?php
 
-if ( ! class_exists( 'MTS_Testimonials_Admin' ) ) :
+if ( ! class_exists( 'ELM_Testimonials_Admin' ) ) :
 
-class MTS_Testimonials_Admin {
+class ELM_Testimonials_Admin {
 
 	public $message;
 
@@ -28,20 +28,20 @@ class MTS_Testimonials_Admin {
      * Process settings forms
      */
 	function process_forms() {
-		global $mts_testimonials;
+		global $elm_testimonials;
 		
 		// Process general settings page form
-		if ( isset( $_POST['mts_save_general_settings'] ) && check_admin_referer( 'mts_testimonial_general_page_action', 'mts_testimonial_general_page_nonce' ) ) {
+		if ( isset( $_POST['elm_save_general_settings'] ) && check_admin_referer( 'elm_testimonial_general_page_action', 'elm_testimonial_general_page_nonce' ) ) {
 		
 			$this->settings['general']['moderate_testimonials'] = intval( @$_POST['moderate_testimonials'] );
 			
 			$this->save_settings();
 
-			$this->message['update'][] = __( 'Your settings have been saved.', 'mts' );
+			$this->message['update'][] = __( 'Your settings have been saved.', 'elm' );
 		}
 		
 		// Process forms settings page form
-		if ( isset( $_POST['mts_save_forms_settings'] ) && check_admin_referer( 'mts_testimonial_forms_page_action', 'mts_testimonial_forms_page_nonce' ) ) {
+		if ( isset( $_POST['elm_save_forms_settings'] ) && check_admin_referer( 'elm_testimonial_forms_page_action', 'elm_testimonial_forms_page_nonce' ) ) {
 			// Checkboxes
 			$this->settings['forms']['testimonial_form']['title_field_checkbox'] =  intval( @$_POST['title_field_checkbox'] );
 			$this->settings['forms']['testimonial_form']['name_field_checkbox'] =  intval( @$_POST['name_field_checkbox'] );
@@ -68,18 +68,18 @@ class MTS_Testimonials_Admin {
 			
 			$this->save_settings();
 			
-			$this->message['update'][] = __( 'Your settings have been saved.', 'mts' );
+			$this->message['update'][] = __( 'Your settings have been saved.', 'elm' );
 		}
 		
 		// Note: Check name for different symbols
 		
 		// Process add new shortcode form
-		if ( isset( $_POST['mts_add_new_shortcode'] ) && check_admin_referer( 'mts_add_new_shortcode_page_action', 'mts_add_new_shortcode_page_nonce' ) ) {
+		if ( isset( $_POST['elm_add_new_shortcode'] ) && check_admin_referer( 'elm_add_new_shortcode_page_action', 'elm_add_new_shortcode_page_nonce' ) ) {
 			// Validate
 			if ( empty( $_POST['name'] ) ) :
-				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'mts' );
-			elseif ( $mts_testimonials->shortcode_generator->get_shortcode( esc_attr( $_POST['name'] ) ) ) :
-				$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'mts' );
+				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'elm' );
+			elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( $_POST['name'] ) ) ) :
+				$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'elm' );
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
@@ -94,9 +94,9 @@ class MTS_Testimonials_Admin {
 				);
 				
 				// Add shortcode
-				$mts_testimonials->shortcode_generator->add_shortcode( $args );
+				$elm_testimonials->shortcode_generator->add_shortcode( $args );
 				
-				$this->message['update'][] = __( 'Shortcode added.', 'mts' );
+				$this->message['update'][] = __( 'Shortcode added.', 'elm' );
 			}
 		}
 	}
@@ -105,16 +105,16 @@ class MTS_Testimonials_Admin {
      * Process GET requests
      */
 	function process_get() {
-		global $mts_testimonials;
+		global $elm_testimonials;
 	
 		// Delete shortcode
-		if ( isset( $_GET['mts_delete_shortcode'] ) && check_admin_referer( 'mts_delete_shortcode_action' ) ) {
-			$shortcode_name = esc_attr( $_GET['mts_delete_shortcode'] );
+		if ( isset( $_GET['elm_delete_shortcode'] ) && check_admin_referer( 'elm_delete_shortcode_action' ) ) {
+			$shortcode_name = esc_attr( $_GET['elm_delete_shortcode'] );
 		
-			if ( $mts_testimonials->shortcode_generator->get_shortcode( $shortcode_name ) ) :
-				$mts_testimonials->shortcode_generator->delete_shortcode( $shortcode_name );
+			if ( $elm_testimonials->shortcode_generator->get_shortcode( $shortcode_name ) ) :
+				$elm_testimonials->shortcode_generator->delete_shortcode( $shortcode_name );
 				
-				$this->message['update'][] = __( 'Shortcode permanently deleted.', 'mts' );
+				$this->message['update'][] = __( 'Shortcode permanently deleted.', 'elm' );
 			endif;
 		}
 	}
@@ -172,7 +172,7 @@ class MTS_Testimonials_Admin {
      * Adds meta box for testimonial custom fields
      */
 	function custom_fields_meta_box() {
-		add_meta_box( 'mts_testimonials_metabox', __( 'Testimonial Fields', 'mts' ), array( $this, 'custom_fields_meta_box_callback' ), 'mts_testimonials', 'normal', 'high' );
+		add_meta_box( 'elm_testimonials_metabox', __( 'Testimonial Fields', 'elm' ), array( $this, 'custom_fields_meta_box_callback' ), 'elm_testimonials', 'normal', 'high' );
 	}
 	
 	/**
@@ -181,7 +181,7 @@ class MTS_Testimonials_Admin {
 	function custom_fields_meta_box_callback() {
 		global $post;
 		
-		$settings = mts_testimonials_get_settings();
+		$settings = elm_testimonials_get_settings();
 		
 		// Setup testimonial arguments
 		$title = get_post_meta( $post->ID, 'testimonial_title', true );
@@ -192,7 +192,7 @@ class MTS_Testimonials_Admin {
 		$image = get_post_meta( $post->ID, 'testimonial_image', true );
 		$rating = get_post_meta( $post->ID, 'testimonial_rating', true );
 		
-		$output = '<div id="mts-testimonials-cf-meta-box">';
+		$output = '<div id="elm-testimonials-cf-meta-box">';
 		
 		if ( (int) $settings['forms']['testimonial_form']['title_field_checkbox'] ) {
 			$output .= "<label for=\"title\">". $settings['forms']['testimonial_form']['title_field_label'] ."</label><br />";
@@ -221,7 +221,7 @@ class MTS_Testimonials_Admin {
 		
 		if ( (int) $settings['forms']['testimonial_form']['image_field_checkbox'] ) {
 			$output .= "<label for=\"image\">". $settings['forms']['testimonial_form']['image_field_label'] ."</label><br />";
-			$output .= "<input type=\"text\" name=\"image\" id=\"image\" value=\"" . $image . "\" /> <input type=\"button\" class=\"upload-button\" value=\"" . __('Upload', 'mts') . "\" /><br />";
+			$output .= "<input type=\"text\" name=\"image\" id=\"image\" value=\"" . $image . "\" /> <input type=\"button\" class=\"upload-button\" value=\"" . __('Upload', 'elm') . "\" /><br />";
 		}
 		
 		if ( (int) $settings['forms']['testimonial_form']['rating_field_checkbox'] ) {
@@ -247,7 +247,7 @@ class MTS_Testimonials_Admin {
      */
     function get_settings( $saved = true ) {
         if ( $saved == true )
-            $this->settings = get_option( 'mts_testimonials_settings' );
+            $this->settings = get_option( 'elm_testimonials_settings' );
         
         return $this->settings;
     }
@@ -281,7 +281,7 @@ class MTS_Testimonials_Admin {
      * Save settings
      */
     function save_settings() {
-        $save = update_option( 'mts_testimonials_settings', $this->settings );
+        $save = update_option( 'elm_testimonials_settings', $this->settings );
 		
 		return true;
     }
@@ -303,7 +303,7 @@ class MTS_Testimonials_Admin {
      * Delete settings option
      */
     function delete_settings_option() {
-        delete_option( 'mts_testimonials_settings' );
+        delete_option( 'elm_testimonials_settings' );
     }
     
     /*
@@ -313,7 +313,7 @@ class MTS_Testimonials_Admin {
         $update_settings = false;
         
         $default_settings = array(
-			'version' => MTS_TESTIMONIALS_VERSION,
+			'version' => ELM_TESTIMONIALS_VERSION,
              'general' => array(
                  'moderate_testimonials' => 1
                 ),
@@ -327,15 +327,15 @@ class MTS_Testimonials_Admin {
 					 'image_field_checkbox' => 1,
 					 'rating_field_checkbox' => 1,
 					 'testimonial_field_checkbox' => 1,
-					 'title_field_label' => __('Title', 'mts'),
-					 'name_field_label' => __('Name', 'mts'),
-					 'title_of_the_person_field_label' => __('Title of the person', 'mts'),
-					 'link_field_label' => __('Link', 'mts'),
-					 'email_field_label' => __('Email', 'mts'),
-					 'image_field_label' => __('Image', 'mts'),
-					 'rating_field_label' => __('Rating', 'mts'),
-					 'testimonial_field_label' => __('Testimonial', 'mts'),
-					 'success_message' => __('Thank you for your feedback!', 'mts'),
+					 'title_field_label' => __('Title', 'elm'),
+					 'name_field_label' => __('Name', 'elm'),
+					 'title_of_the_person_field_label' => __('Title of the person', 'elm'),
+					 'link_field_label' => __('Link', 'elm'),
+					 'email_field_label' => __('Email', 'elm'),
+					 'image_field_label' => __('Image', 'elm'),
+					 'rating_field_label' => __('Rating', 'elm'),
+					 'testimonial_field_label' => __('Testimonial', 'elm'),
+					 'success_message' => __('Thank you for your feedback!', 'elm'),
 					 'error_message' => __('Please fill in all fields')
 				 )
 			)
@@ -399,52 +399,52 @@ class MTS_Testimonials_Admin {
      * Menu
      */
 	function menu() {
-        add_menu_page( __( 'General', 'mts' ), __( 'Testimonials', 'mts' ), 'manage_options', 'mts_testimonials', array( $this, 'settings_general_content' ), MTS_TESTIMONIALS_URL . '/assets/img/plugin-icon.png' );
-		add_submenu_page( null, __( 'Forms', 'mts' ), __( 'Forms', 'mts' ), 'manage_options', 'mts_testimonials_forms', array( $this, 'settings_forms_content' ), null );
-		add_submenu_page( null, __( 'Shortcodes', 'mts' ), __( 'Shortcodes', 'mts' ), 'manage_options', 'mts_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
-		add_submenu_page( null, __( 'Add New Shortcode', 'mts' ), __( 'Add New Shortcode', 'mts' ), 'manage_options', 'mts_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
+        add_menu_page( __( 'General', 'elm' ), __( 'Testimonials', 'elm' ), 'manage_options', 'elm_testimonials', array( $this, 'settings_general_content' ), null );
+		add_submenu_page( null, __( 'Forms', 'elm' ), __( 'Forms', 'elm' ), 'manage_options', 'elm_testimonials_forms', array( $this, 'settings_forms_content' ), null );
+		add_submenu_page( null, __( 'Shortcodes', 'elm' ), __( 'Shortcodes', 'elm' ), 'manage_options', 'elm_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
+		add_submenu_page( null, __( 'Add New Shortcode', 'elm' ), __( 'Add New Shortcode', 'elm' ), 'manage_options', 'elm_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
 	}
 	
 	/*
      * General settings page
      */
 	function settings_general_content() {
-		include( MTS_TESTIMONIALS_ADMIN_PATH . '/interface/general.php' );
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/general.php' );
 	}
 	
 	/*
      * Forms settings page
      */
 	function settings_forms_content() {
-		include( MTS_TESTIMONIALS_ADMIN_PATH . '/interface/forms.php' );
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/forms.php' );
 	}
 	
 	/*
      * Shortcodes settings page
      */
 	function settings_shortcodes_content() {
-		include( MTS_TESTIMONIALS_ADMIN_PATH . '/interface/shortcodes.php' );
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/shortcodes.php' );
 	}
 	
 	/*
      * Add new shortcode page
      */
 	function settings_add_new_shortcode_content() {
-		include( MTS_TESTIMONIALS_ADMIN_PATH . '/interface/add-new-shortcode.php' );
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/add-new-shortcode.php' );
 	}
 	
 	/*
      * Settings tabs HTML
      */
 	function settings_page_tabs_html() {
-		$general_active  = ( basename( $_GET['page'] ) == 'mts_testimonials' ) ? 'nav-tab-active' : '';
-		$forms_active    = ( basename( $_GET['page'] ) == 'mts_testimonials_forms' ) ? 'nav-tab-active' : '';
-		$shortcodes_active    = ( basename( $_GET['page'] ) == 'mts_testimonials_shortcodes' || basename( $_GET['page'] ) == 'mts_testimonials_add_new_shortcode' ) ? 'nav-tab-active' : '';
+		$general_active  = ( basename( $_GET['page'] ) == 'elm_testimonials' ) ? 'nav-tab-active' : '';
+		$forms_active    = ( basename( $_GET['page'] ) == 'elm_testimonials_forms' ) ? 'nav-tab-active' : '';
+		$shortcodes_active    = ( basename( $_GET['page'] ) == 'elm_testimonials_shortcodes' || basename( $_GET['page'] ) == 'elm_testimonials_add_new_shortcode' ) ? 'nav-tab-active' : '';
         
-        $html = '<h2 class="nav-tab-wrapper" id="mts-settings-tabs">' . "\r\n";
-        $html .= '<a class="nav-tab ' . $general_active . '" id="mts-settings-general-tab" href="' . admin_url( 'admin.php?page=mts_testimonials' ) . '">' . __( 'General', 'mts' ) . '</a>' . "\r\n";
-        $html .= '<a class="nav-tab ' . $forms_active . '" id="mts-settings-forms-tab" href="' . admin_url( 'admin.php?page=mts_testimonials_forms' ) . '">' . __( 'Forms', 'mts' ) . '</a>' . "\r\n";
-		$html .= '<a class="nav-tab ' . $shortcodes_active . '" id="mts-settings-shortcodes-tab" href="' . admin_url( 'admin.php?page=mts_testimonials_shortcodes' ) . '">' . __( 'Shortcodes', 'mts' ) . '</a>' . "\r\n";
+        $html = '<h2 class="nav-tab-wrapper" id="elm-settings-tabs">' . "\r\n";
+        $html .= '<a class="nav-tab ' . $general_active . '" id="elm-settings-general-tab" href="' . admin_url( 'admin.php?page=elm_testimonials' ) . '">' . __( 'General', 'elm' ) . '</a>' . "\r\n";
+        $html .= '<a class="nav-tab ' . $forms_active . '" id="elm-settings-forms-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_forms' ) . '">' . __( 'Forms', 'elm' ) . '</a>' . "\r\n";
+		$html .= '<a class="nav-tab ' . $shortcodes_active . '" id="elm-settings-shortcodes-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_shortcodes' ) . '">' . __( 'Shortcodes', 'elm' ) . '</a>' . "\r\n";
         $html .= '</h2>' . "\r\n";
         
         echo $html;
@@ -456,23 +456,23 @@ class MTS_Testimonials_Admin {
 	function enqueue_scripts() {
 		global $post, $pagenow;
 		
-		if ( @get_post_type( $post ) == 'mts_testimonials' || $pagenow == 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] == 'mts_testimonials_shortcodes'  ||
-			isset( $_GET['page'] ) && $_GET['page'] == 'mts_testimonials_add_new_shortcode' ) {
-			wp_register_style( 'mts_testimonials_css', MTS_TESTIMONIALS_URL . '/assets/css/admin.css', false );
-			wp_enqueue_style( 'mts_testimonials_css' );
+		if ( @get_post_type( $post ) == 'elm_testimonials' || $pagenow == 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_shortcodes'  ||
+			isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_add_new_shortcode' ) {
+			wp_register_style( 'elm_testimonials_css', ELM_TESTIMONIALS_URL . '/assets/css/admin.css', false );
+			wp_enqueue_style( 'elm_testimonials_css' );
 			
-			wp_enqueue_script( 'mts_testimonials', MTS_TESTIMONIALS_URL . '/assets/js/admin.js', array( 'jquery' ) );
+			wp_enqueue_script( 'elm_testimonials', ELM_TESTIMONIALS_URL . '/assets/js/admin.js', array( 'jquery' ) );
 		
-			if ( @get_post_type( $post ) == 'mts_testimonials' )
+			if ( @get_post_type( $post ) == 'elm_testimonials' )
 				return;
 				
 			// Enqueue these scripts for live preview and only for the shortcodes page
-			wp_enqueue_style( 'mts-testimonials', MTS_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
-			wp_enqueue_style( 'mts-owl-carousel', MTS_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
-			wp_enqueue_style( 'mts-font-awesome', MTS_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
+			wp_enqueue_style( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
+			wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
+			wp_enqueue_style( 'elm-font-awesome', ELM_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
 			
-			wp_enqueue_script( 'mts-testimonials', MTS_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
-			wp_enqueue_script( 'mts-carousel', MTS_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
+			wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
+			wp_enqueue_script( 'elm-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
 		}
 	}
 }

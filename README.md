@@ -1,2 +1,0 @@
-# testimonials
-Testimonials plugin

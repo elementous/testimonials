@@ -2,23 +2,23 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-global $mts_testimonials, $mts_testimonials_admin;
+global $elm_testimonials, $elm_testimonials_admin;
 
-$settings = mts_testimonials_get_settings();
+$settings = elm_testimonials_get_settings();
 ?>
 <div class="wrap testimonials">
 	<?php 
-	$mts_testimonials_admin->messages_html();
-	$mts_testimonials_admin->settings_page_tabs_html();
+	$elm_testimonials_admin->messages_html();
+	$elm_testimonials_admin->settings_page_tabs_html();
 	?>
-	<h3><?php _e('Shortcodes', 'mts'); ?></h3>
+	<h3><?php _e('Shortcodes', 'elm'); ?></h3>
 	
 	<div id="add-new-shortcode">
-		<a href="<?php echo $mts_testimonials->shortcode_generator->get_add_new_shortcode_url(); ?>" class="button button-secondary"><?php _e('Add new shortcode', 'elm'); ?></a>
+		<a href="<?php echo $elm_testimonials->shortcode_generator->get_add_new_shortcode_url(); ?>" class="button button-secondary"><?php _e('Add new shortcode', 'elm'); ?></a>
 	</div>
 	
 	<?php
-	$shortcodes = $mts_testimonials->shortcode_generator->get_shortcode_list();
+	$shortcodes = $elm_testimonials->shortcode_generator->get_shortcode_list();
 			
 	if ( !empty( $shortcodes ) ) {
 	?>
@@ -64,10 +64,10 @@ $settings = mts_testimonials_get_settings();
 						<?php echo $shortcode['name']; ?>
 					</td>
 					<td>
-						[mts_testimonial_sc name="<?php echo $shortcode_index; ?>"]
+						[elm_testimonial_sc name="<?php echo $shortcode_index; ?>"]
 					</td>
 					<td>
-						<a href="<?php echo $mts_testimonials->shortcode_generator->get_shortcode_delete_url( $shortcode_index ); ?>"><img src="<?php echo MTS_TESTIMONIALS_URL . '/assets/img/delete.png' ; ?>" class="delete-image" alt="" /></a>
+						<a href="<?php echo $elm_testimonials->shortcode_generator->get_shortcode_delete_url( $shortcode_index ); ?>"><img src="<?php echo ELM_TESTIMONIALS_URL . '/assets/img/delete.png' ; ?>" class="delete-image" alt="" /></a>
 					</td>	
 				</tr>
 				<?php
@@ -78,7 +78,7 @@ $settings = mts_testimonials_get_settings();
 	<?php
 	} else {
 	?>
-		<p><?php _e('No shortcodes. You can add new.', 'mts'); ?></p>
+		<p><?php _e('No shortcodes. You can add new.', 'elm'); ?></p>
 	<?php
 	}
 	?>

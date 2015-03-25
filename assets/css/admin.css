@@ -1,9 +1,4 @@
-/**
- * Testimonials
- *
- * Author: Elementous
-*/
-#mts-testimonials-cf-meta-box input[type="text"]{
+#elm-testimonials-cf-meta-box input[type="text"]{
 	width: 40%;
 }
 
@@ -38,7 +33,7 @@
 	font-weight: bold;
 }
 
-.mts-loading {
+.elm-loading {
 	width: 128px;
 	height: 15px;
 	background: url('../img/ajax-loader.gif');

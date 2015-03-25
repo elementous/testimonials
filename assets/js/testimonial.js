@@ -1,10 +1,5 @@
-/**
- * Testimonials front-end script.
- *
- * Author: Elementous
-*/
 jQuery(document).ready(function($) {
-    var $testimonial = $('.mts-testimonial'),
+    var $testimonial = $('.elm-testimonial'),
         $testimonials_images = $('.testimonials-authors li');
 
     $testimonials_images.hover(function() {
@@ -35,7 +30,7 @@ jQuery(document).ready(function($) {
     });
 
     /*2nd script*/
-    var $testimonial_2 = $('.mts-testimonial-2'),
+    var $testimonial_2 = $('.elm-testimonial-2'),
         $testimonials_images_2 = $('.testimonials-authors-2 li');
 
     $testimonials_images_2.hover(function() {
@@ -66,7 +61,7 @@ jQuery(document).ready(function($) {
     });
 
     /*3rd Script*/
-      var $testimonial_3 = $('.mts-testimonial-3'),
+      var $testimonial_3 = $('.elm-testimonial-3'),
         $testimonials_images_3 = $('.testimonials-authors-3 li'),
         $testi_author_3 = $('.testi-author-3');
 

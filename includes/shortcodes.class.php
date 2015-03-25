@@ -2,16 +2,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if ( ! class_exists( 'MTS_Testimonials_Shortcodes' ) ) :
+if ( ! class_exists( 'ELM_Testimonials_Shortcodes' ) ) :
 
-class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
+class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 
 	function __construct() {
 		add_action( 'init', array( $this, 'init' ), 20 );
 		
-		add_shortcode( 'mts_testimonial_form', array( $this, 'testimonial_form' ) );
-		add_shortcode( 'mts_testimonial', array( $this, 'testimonial_shortcode' ) );
-		add_shortcode( 'mts_testimonial_sc', array( $this, 'generated_shortcode' ) );
+		add_shortcode( 'elm_testimonial_form', array( $this, 'testimonial_form' ) );
+		add_shortcode( 'elm_testimonial', array( $this, 'testimonial_shortcode' ) );
+		add_shortcode( 'elm_testimonial_sc', array( $this, 'generated_shortcode' ) );
 	}
 	
 	function init() {
@@ -19,7 +19,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 		if ( isset( $_POST['submit_testimonial'] ) && wp_verify_nonce( $_POST['testimonial_nonce'], 'testimonial_form' ) ) {
 			global $testimonial_form_messages;
 			
-			$settings = mts_testimonials_get_settings();
+			$settings = elm_testimonials_get_settings();
 		
 			if ( isset( $_POST['title'] ) )
 				$args['title'] = esc_attr( $_POST['title'] );
@@ -32,7 +32,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 				
 			if ( isset( $_POST['link'] ) ) {
 				if ( !filter_var( $_POST['link'], FILTER_VALIDATE_URL ) ) :
-					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'mts'), strtolower( $settings['forms']['testimonial_form']['link_field_label'] ) );
+					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'elm'), strtolower( $settings['forms']['testimonial_form']['link_field_label'] ) );
 				else :
 					$args['link'] = esc_url( $_POST['link'] );
 				endif;
@@ -40,7 +40,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 				
 			if ( isset( $_POST['email'] ) ) {
 				if ( !filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL ) ) :
-					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'mts'), strtolower( $settings['forms']['testimonial_form']['email_field_label'] ) );
+					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'elm'), strtolower( $settings['forms']['testimonial_form']['email_field_label'] ) );
 				else :
 					$args['email'] = esc_attr( $_POST['email'] );
 				endif;
@@ -97,7 +97,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 	function testimonial_form( $atts ) {
 		global $testimonial_form_messages;
 		
-		$settings = mts_testimonials_get_settings();
+		$settings = elm_testimonials_get_settings();
 	
 		$nonce = wp_create_nonce( 'testimonial_form' );
 		
@@ -106,9 +106,9 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 		// Display messages
 		if ( is_array( $testimonial_form_messages ) ) {
 			if ( @$testimonial_form_messages['success'] ) {
-				$output .= "<div class=\"mts-success\">". $testimonial_form_messages['success'] ."</div>";
+				$output .= "<div class=\"elm-success\">". $testimonial_form_messages['success'] ."</div>";
 			} else if ( $testimonial_form_messages['error'] ) {
-				$output .= "<div class=\"mts-error\">";
+				$output .= "<div class=\"elm-error\">";
 				foreach( $testimonial_form_messages['error'] as $k => $message ) {
 					$output .= $message . "<br />\r\n";
 				}
@@ -167,7 +167,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 		$output .= "<input type=\"hidden\" name=\"testimonial_nonce\" value=\"". $nonce ."\" />";
 		$output .= "<br /><br />";
 		
-		$output .= "<input type=\"submit\" name=\"submit_testimonial\" id=\"submit_testimonial\" value=\"". __('Submit', 'mts') . "\" />";
+		$output .= "<input type=\"submit\" name=\"submit_testimonial\" id=\"submit_testimonial\" value=\"". __('Submit', 'elm') . "\" />";
 		$output .= "</form>";
 	
 		return $output;
@@ -180,7 +180,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 	 * @return string
 	 */
 	function generated_shortcode( $atts ) {
-		global $mts_testimonials;
+		global $elm_testimonials;
 	
 		$attribute = shortcode_atts( array(
 			'name' => ''
@@ -191,7 +191,7 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 		$output = '';
 	
 		if ( !empty( $attribute['name'] ) ) {
-			$shortcodes = $mts_testimonials->shortcode_generator->get_shortcode_list();
+			$shortcodes = $elm_testimonials->shortcode_generator->get_shortcode_list();
 			
 			if ( array_key_exists( $attribute['name'], $shortcodes ) ) {
 				$atts = $shortcodes[$attribute['name']];
@@ -221,10 +221,76 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 		), $atts );
 		
 		if ( $attribute['testimonial'] == 'all' ) :
-			$testimonial_query = mts_get_testimonial( 'all', 'publish', esc_attr( $attribute['order_by'] ) );
+			$testimonial_query = elm_get_testimonial( 'all', 'publish', esc_attr( $attribute['order_by'] ) );
 		else :
-			$testimonial_query = mts_get_testimonial( esc_attr( $attribute['testimonial'] ), 'publish', esc_attr( $attribute['order_by'] ) );
+			$testimonial_query = elm_get_testimonial( esc_attr( $attribute['testimonial'] ), 'publish', esc_attr( $attribute['order_by'] ) );
 		endif;
+		
+		$output = '';
+		
+		$layout = esc_attr( $attribute['layout'] );
+		
+		// Add slider wrapper for specific layouts
+		switch ( $layout ) {
+			case 'speech_bubble_theme':
+			
+			$output .= '<div class="testimonial-slider-container clearfix loading">
+			<div id="slider" class="testimonial-slider">';
+			break;
+			case 'glowing_slider_1':
+			$output .= '<div class="testimonial_wrap">';
+			
+			$output .= '<div class="testimonials">';
+			
+			foreach( $testimonial_query as $post ) {
+				$name = get_post_meta( $post->ID, 'testimonial_name', true );
+				$link = get_post_meta( $post->ID, 'testimonial_link', true );
+				$testimonial_content = $post->post_content;
+				
+				$output .= '<div class="elm-testimonial" id="testimonial-'. $post->ID .'"><p>'. $testimonial_content .'<span class="testi-author">- '. $name .' ('. $link .')</span></p></div>';
+			}
+			
+			$output .= '</div>';
+			
+			$output .= '<ul id="testimonials-authors" class="testimonials-authors">';
+			
+			foreach( $testimonial_query as $post ) {
+				$image = get_post_meta( $post->ID, 'testimonial_image', true );
+				
+				$output .= '<li id="testimonial-'. $post->ID .'"><img src="'. esc_url( $image ) .'" width="94" height="100"></li>';
+			}
+			
+			$output .= '</ul>';
+
+			break;
+			case 'glowing_slider_2':
+			
+			$output .= '<div class="testimonial_wrap testimonial_wrap_author">
+			<ul id="testimonials-authors-3" class="testimonials-authors-3">
+			';
+			
+			foreach( $testimonial_query as $post ) {
+				$image = get_post_meta( $post->ID, 'testimonial_image', true );
+				$name = get_post_meta( $post->ID, 'testimonial_name', true );
+				$link = get_post_meta( $post->ID, 'testimonial_link', true );
+				
+				$output .= '<li id="testimonial-'. $post->ID .'"><img src="'. esc_url( $image ) .'" width="94" height="100"><div class="testimonial-hover"></div><p class="testi-author-3">- '. $name .' ('. $link .')</p></li>';
+			}
+			
+			$output .= '</ul>';
+			
+			$output .= '<div class="testimonials-3">';
+			
+			foreach( $testimonial_query as $post ) {
+				$testimonial_content = $post->post_content;
+				
+				$output .= '<div class="elm-testimonial-3" id="testimonial-'. $post->ID .'"><p>'. $testimonial_content .'</p></div>';
+			}
+			
+			$output .= '</div>';
+			
+			break;
+		}
 		
 		foreach( $testimonial_query as $post ) {
 			// Setup testimonial arguments
@@ -255,13 +321,25 @@ class MTS_Testimonials_Shortcodes extends MTS_Testimonials {
 				$args['testimonial'] = esc_attr( $testimonial_content );
 			
 			$args['id'] = (int) $post->ID;
-			$args['layout'] = esc_attr( $attribute['layout'] );
+			$args['layout'] = $layout;
 			$args['show_image'] = (int) $attribute['show_image'];
 			$args['show_rating'] = (int) $attribute['show_rating'];
-
-			$output = '';
 			
-			$output .= mts_get_testimonial_layout( $args );
+			$output .= elm_get_testimonial_layout( $args );
+		}
+		
+		// Close slider wrapper for specific layouts
+		switch ( $layout ) {
+			case 'speech_bubble_theme':
+			
+			$output .= '</div></div>';
+			break;
+			case 'glowing_slider_1':
+				$output .= '</div>';
+			break;
+			case 'glowing_slider_2':
+				$output .= '</div>';
+			break;
 		}
 		
 		return $output;

@@ -1,13 +1,13 @@
 <?php
 
-if ( ! class_exists( 'MTS_Testimonials_Shortcode_Generator' ) ) :
+if ( ! class_exists( 'ELM_Testimonials_Shortcode_Generator' ) ) :
 
-class MTS_Testimonials_Shortcode_Generator {
+class ELM_Testimonials_Shortcode_Generator {
 
 	function __construct() {
 		add_action( 'init', array( $this, 'init' ), 10 );
 		
-		add_action( 'wp_ajax_mts_testimonial_live_preview', array( $this, 'testimonial_live_preview' ) );
+		add_action( 'wp_ajax_elm_testimonial_live_preview', array( $this, 'testimonial_live_preview' ) );
 	}
 	
 	function init() {
@@ -20,9 +20,9 @@ class MTS_Testimonials_Shortcode_Generator {
 	 * @return void
      */
 	function testimonial_live_preview() {
-		check_ajax_referer( 'mts_add_new_shortcode_page_action', 'nonce' );
+		check_ajax_referer( 'elm_add_new_shortcode_page_action', 'nonce' );
 		
-		global $mts_testimonials;
+		global $elm_testimonials;
 		
 		$atts = array();
 		$output = '';
@@ -36,10 +36,10 @@ class MTS_Testimonials_Shortcode_Generator {
 		$atts['show_rating'] = esc_attr( $_POST['show_rating'] );
 		
 		// Render preview
-		$output .= $mts_testimonials->shortcodes->testimonial_shortcode( $atts );
+		$output .= $elm_testimonials->shortcodes->testimonial_shortcode( $atts );
 		
 		$response = array(
-            'message' => __('OK', 'mts'),
+            'message' => __('OK', 'elm'),
 			'output' => $output
         );
 		
@@ -54,14 +54,14 @@ class MTS_Testimonials_Shortcode_Generator {
      * @param array $args
      */
 	function add_shortcode( $args ) {
-		$shortcodes = get_option( 'mts_testimonials_shortcodes' );
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 	
 		// Check if shortcode does not exist
 		if ( ! $this->get_shortcode( $args['name'] ) ) {
 			$index = strtolower( $args['name'] );
 			$shortcodes[$index] = $args;
 			
-			update_option( 'mts_testimonials_shortcodes', $shortcodes );
+			update_option( 'elm_testimonials_shortcodes', $shortcodes );
 		}
 	}
 	
@@ -71,7 +71,7 @@ class MTS_Testimonials_Shortcode_Generator {
      * @param string $name
      */
 	function get_shortcode( $name ) {
-		$shortcodes = get_option( 'mts_testimonials_shortcodes' );
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 		
 		if ( ! is_array( $shortcodes ) )
 			$shortcodes = array();
@@ -87,7 +87,7 @@ class MTS_Testimonials_Shortcode_Generator {
 	function get_shortcode_list() {
 		$shortcodes = array();
 	
-		$shortcodes = get_option( 'mts_testimonials_shortcodes' );
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 		
 		if ( is_array( $shortcodes ) )
 			// Reorder array to get the latest shortcode first
@@ -100,12 +100,12 @@ class MTS_Testimonials_Shortcode_Generator {
      * @param string $name
      */
 	function delete_shortcode( $name ) {
-		$shortcodes = get_option( 'mts_testimonials_shortcodes' );
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 		
 		if ( $this->get_shortcode( $name ) ) {
 			unset( $shortcodes[$name] );
 			
-			update_option( 'mts_testimonials_shortcodes', $shortcodes );
+			update_option( 'elm_testimonials_shortcodes', $shortcodes );
 		}
 	}
 	
@@ -114,7 +114,7 @@ class MTS_Testimonials_Shortcode_Generator {
 	 *
      */
 	function get_add_new_shortcode_url() {
-		$url = add_query_arg( array( 'page' => 'mts_testimonials_add_new_shortcode' ), admin_url( 'admin.php' ) );
+		$url = add_query_arg( array( 'page' => 'elm_testimonials_add_new_shortcode' ), admin_url( 'admin.php' ) );
 
 		return $url;
 	}
@@ -126,7 +126,7 @@ class MTS_Testimonials_Shortcode_Generator {
 	function get_shortcode_delete_url( $name ) {
 		$admin_url = admin_url( 'admin.php' );
 		
-		$url = wp_nonce_url( add_query_arg( array( 'page' => 'mts_testimonials_shortcodes', 'mts_delete_shortcode' => $name ), $admin_url ), 'mts_delete_shortcode_action' );
+		$url = wp_nonce_url( add_query_arg( array( 'page' => 'elm_testimonials_shortcodes', 'elm_delete_shortcode' => $name ), $admin_url ), 'elm_delete_shortcode_action' );
 		
 		return $url;
 	}

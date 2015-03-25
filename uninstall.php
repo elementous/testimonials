@@ -1,14 +1,14 @@
 <?php
 /**
- * MyThemeShop Testimonials Uninstall
+ * Testimonials plugin uninstall
  *
- * Uninstalling MyThemeShop Testimonials deletes options.
+ * Uninstalling Elementous Testimonials deletes options.
  *
  */
 if( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 	exit();
 	
-delete_option( 'mts_testimonials' );
-delete_option( 'mts_testimonials_settings' );
+delete_option( 'elm_testimonials' );
+delete_option( 'elm_testimonials_settings' );
 
 // Delete testimonials?
