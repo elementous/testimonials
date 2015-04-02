@@ -34,6 +34,10 @@ class ELM_Testimonials_Admin {
 		if ( isset( $_POST['elm_save_general_settings'] ) && check_admin_referer( 'elm_testimonial_general_page_action', 'elm_testimonial_general_page_nonce' ) ) {
 		
 			$this->settings['general']['moderate_testimonials'] = intval( @$_POST['moderate_testimonials'] );
+			$this->settings['general']['notifications'] = intval( @$_POST['notifications'] );
+			$this->settings['general']['rich_snippets'] = intval( @$_POST['rich_snippets'] );
+			
+			$this->settings['general']['notifications_email'] = esc_attr( @$_POST['notifications_email'] );
 			
 			$this->save_settings();
 
@@ -400,8 +404,8 @@ class ELM_Testimonials_Admin {
      */
 	function menu() {
         add_menu_page( __( 'General', 'elm' ), __( 'Testimonials', 'elm' ), 'manage_options', 'elm_testimonials', array( $this, 'settings_general_content' ), null );
-		add_submenu_page( null, __( 'Forms', 'elm' ), __( 'Forms', 'elm' ), 'manage_options', 'elm_testimonials_forms', array( $this, 'settings_forms_content' ), null );
-		add_submenu_page( null, __( 'Shortcodes', 'elm' ), __( 'Shortcodes', 'elm' ), 'manage_options', 'elm_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
+		add_submenu_page( null, __( 'Form', 'elm' ), __( 'Form', 'elm' ), 'manage_options', 'elm_testimonials_forms', array( $this, 'settings_forms_content' ), null );
+		add_submenu_page( null, __( 'Display', 'elm' ), __( 'Display', 'elm' ), 'manage_options', 'elm_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
 		add_submenu_page( null, __( 'Add New Shortcode', 'elm' ), __( 'Add New Shortcode', 'elm' ), 'manage_options', 'elm_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
 	}
 	
@@ -416,7 +420,7 @@ class ELM_Testimonials_Admin {
      * Forms settings page
      */
 	function settings_forms_content() {
-		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/forms.php' );
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/form.php' );
 	}
 	
 	/*
@@ -443,8 +447,8 @@ class ELM_Testimonials_Admin {
         
         $html = '<h2 class="nav-tab-wrapper" id="elm-settings-tabs">' . "\r\n";
         $html .= '<a class="nav-tab ' . $general_active . '" id="elm-settings-general-tab" href="' . admin_url( 'admin.php?page=elm_testimonials' ) . '">' . __( 'General', 'elm' ) . '</a>' . "\r\n";
-        $html .= '<a class="nav-tab ' . $forms_active . '" id="elm-settings-forms-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_forms' ) . '">' . __( 'Forms', 'elm' ) . '</a>' . "\r\n";
-		$html .= '<a class="nav-tab ' . $shortcodes_active . '" id="elm-settings-shortcodes-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_shortcodes' ) . '">' . __( 'Shortcodes', 'elm' ) . '</a>' . "\r\n";
+        $html .= '<a class="nav-tab ' . $forms_active . '" id="elm-settings-forms-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_forms' ) . '">' . __( 'Form', 'elm' ) . '</a>' . "\r\n";
+		$html .= '<a class="nav-tab ' . $shortcodes_active . '" id="elm-settings-display-tab" href="' . admin_url( 'admin.php?page=elm_testimonials_shortcodes' ) . '">' . __( 'Display', 'elm' ) . '</a>' . "\r\n";
         $html .= '</h2>' . "\r\n";
         
         echo $html;

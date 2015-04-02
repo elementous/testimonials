@@ -10,7 +10,7 @@ function elm_get_testimonial_layout( $args ) {
 	
 	switch ( $args['layout'] ) {
 	
-	case 'simple_grid':
+	case 'layout1':
 	
 		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 style-5 style-11" id="testimonial-id-'. $args['id'] .'">';
 		
@@ -47,6 +47,12 @@ function elm_get_testimonial_layout( $args ) {
 			$output .= '</div>';
 	break;	
 	
+	default :
+	$output = '';
+	
+	}
+	
+	/*
 	case 'simple_grid_2':
 	
 		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content5 style-3 style-12" id="testimonial-id-'. $args['id'] .'">';
@@ -564,7 +570,7 @@ function elm_get_testimonial_layout( $args ) {
 	break;
 	default :
 		$output = '';
-	}
+	}*/
 	
 	return $output;
 }
