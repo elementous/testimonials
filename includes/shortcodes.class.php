@@ -54,7 +54,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				$upload_overrides = array( 'test_form' => false );
 				$upload = wp_handle_upload( $uploadedfile, $upload_overrides );
 				
-				if ( $upload ) {
+				if ( $upload && !empty( $upload['file'] ) ) {
 					// Resize image
 					$image_editor = wp_get_image_editor( $upload['file'] );
 					$image_editor->resize( 75, 75 );
@@ -70,7 +70,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			if ( isset( $_POST['testimonial'] ) )
 				$args['testimonial'] = esc_attr( $_POST['testimonial'] );
 	
-			if ( ! is_array( $testimonial_form_messages['error'] ) ) :
+			if ( ! @is_array( $testimonial_form_messages['error'] ) ) :
 				if ( !empty( $args ) ) :
 					$add_testimonial = $this->add_testimonial( $args );
 				else :

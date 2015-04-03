@@ -18,6 +18,30 @@ class ELM_Testimonials {
 		$this->create_post_type();
 		
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_js_and_css' ) );
+		add_action( 'elm_add_testimonial', array( $this, 'notify_about_new_testimonial' ), 10, 2 );
+	}
+	
+	/**
+	 * Notify about new testimonial
+	 *
+	 * @param array $args
+	 * @return void
+	 */
+	function notify_about_new_testimonial( $testimonial_id, $args ) {
+		global $elm_testimonials_admin;
+
+		$enabled = $elm_testimonials_admin->get_setting( 'general', 'notifications' );
+		$recipients = $elm_testimonials_admin->get_setting( 'general', 'notifications_email' );
+		
+		if ( $enabled && !empty ( $recipients ) ) {
+			
+			$subject = 'New testimonial';
+			
+			$body = __('There\'s new testimonial. You can check it here:', 'elm') . ' ' . '<a href="' . get_permalink( $testimonial_id ) . '">' . get_permalink( $testimonial_id )  . '</a>';
+			
+			wp_mail( $recipients, $subject, $body );
+			
+		}
 	}
 	
 	/**
@@ -63,6 +87,8 @@ class ELM_Testimonials {
 				add_post_meta( $testimonial_id, 'testimonial_image', $args['image'] );
 			if ( isset ( $args['rating'] ) )
 				add_post_meta( $testimonial_id, 'testimonial_rating', $args['rating'] );
+				
+			do_action( 'elm_add_testimonial', $testimonial_id, $args );
 				
 			return true;
 		}

@@ -36,7 +36,7 @@ $settings = elm_testimonials_get_settings();
 					
 						<label for="notifications">
 						<input type="checkbox" name="notifications" id="notifications" value="1" <?php checked( $settings['general']['notifications'] ); ?> />
-						<?php _e('Notify administrator about every new feedback', 'elm'); ?></label>
+						<?php _e('Notify about every new feedback', 'elm'); ?></label>
 						<br />
 
 						<label for="notifications-email"><?php _e('Email:', 'elm'); ?>

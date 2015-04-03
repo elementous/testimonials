@@ -47,6 +47,7 @@ class ELM_Testimonials_Admin {
 		// Process forms settings page form
 		if ( isset( $_POST['elm_save_forms_settings'] ) && check_admin_referer( 'elm_testimonial_forms_page_action', 'elm_testimonial_forms_page_nonce' ) ) {
 			// Checkboxes
+			// Enable input
 			$this->settings['forms']['testimonial_form']['title_field_checkbox'] =  intval( @$_POST['title_field_checkbox'] );
 			$this->settings['forms']['testimonial_form']['name_field_checkbox'] =  intval( @$_POST['name_field_checkbox'] );
 			$this->settings['forms']['testimonial_form']['title_of_the_person_checkbox'] =  intval( @$_POST['title_of_the_person_checkbox'] );
@@ -55,6 +56,17 @@ class ELM_Testimonials_Admin {
 			$this->settings['forms']['testimonial_form']['image_field_checkbox'] =  intval( @$_POST['image_field_checkbox'] );
 			$this->settings['forms']['testimonial_form']['rating_field_checkbox'] =  intval( @$_POST['rating_field_checkbox'] );
 			$this->settings['forms']['testimonial_form']['testimonial_field_checkbox'] =  intval( @$_POST['testimonial_field_checkbox'] );
+			
+			// Required
+			$this->settings['forms']['testimonial_form']['title_field_required_checkbox'] =  intval( @$_POST['title_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['name_field_required_checkbox'] =  intval( @$_POST['name_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['title_of_the_person_required_checkbox'] =  intval( @$_POST['title_of_the_person_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['link_field_required_checkbox'] =  intval( @$_POST['link_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['email_field_required_checkbox'] =  intval( @$_POST['email_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['image_field_required_checkbox'] =  intval( @$_POST['image_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['rating_field_required_checkbox'] =  intval( @$_POST['rating_field_required_checkbox'] );
+			$this->settings['forms']['testimonial_form']['testimonial_field_required_checkbox'] =  intval( @$_POST['testimonial_field_required_checkbox'] );
+			
 			
 			// Labels
 			$this->settings['forms']['testimonial_form']['title_field_label'] =  esc_attr( $_POST['title_field_label'] );
@@ -331,6 +343,16 @@ class ELM_Testimonials_Admin {
 					 'image_field_checkbox' => 1,
 					 'rating_field_checkbox' => 1,
 					 'testimonial_field_checkbox' => 1,
+					 
+					 'title_field_required_checkbox' => 0,
+					 'name_field_required_checkbox' => 1,
+					 'title_of_the_person_required_checkbox' => 0,
+					 'link_field_required_checkbox' => 0,
+					 'email_field_required_checkbox' => 0,
+					 'image_field_required_checkbox' => 0,
+					 'rating_field_required_checkbox' => 0,
+					 'testimonial_field_required_checkbox' => 1,
+					 
 					 'title_field_label' => __('Title', 'elm'),
 					 'name_field_label' => __('Name', 'elm'),
 					 'title_of_the_person_field_label' => __('Title of the person', 'elm'),
@@ -340,7 +362,7 @@ class ELM_Testimonials_Admin {
 					 'rating_field_label' => __('Rating', 'elm'),
 					 'testimonial_field_label' => __('Testimonial', 'elm'),
 					 'success_message' => __('Thank you for your feedback!', 'elm'),
-					 'error_message' => __('Please fill in all fields')
+					 'error_message' => __('Please fill in all fields', 'elm')
 				 )
 			)
 		);
