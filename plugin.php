@@ -1,11 +1,11 @@
 <?php
 /*
-  Plugin Name: ELM Testimonials
+  Plugin Name: Testimonials by Elementous
   Plugin URI: https://www.elementous.com
   Description: Easily add testimonials to your site.
   Author: Elementous
   Author URI: https://www.elementous.com
-  Version: 1.0dev
+  Version: 1.0
 */
 
 define( 'ELM_TESTIMONIALS_VERSION', '1.0' );

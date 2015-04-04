@@ -63,6 +63,10 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 					$args['image'] = $upload['url'];
 				}
 			}
+			
+			if ( isset( $_POST['category'] ) && ! empty( $_POST['category'] ) ) {
+				$args['category'] = esc_attr( $_POST['category'] );
+			}
 				
 			if ( isset( $_POST['rating'] ) )
 				$args['rating'] = (int) $_POST['rating'];
@@ -115,6 +119,10 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				$output .= "</div>";
 			}
 		}
+		
+		$extracted_atts = shortcode_atts( array(
+			'category' => ''
+		), $atts );
 	
 		$output .= "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">";
 		
@@ -164,10 +172,14 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			$output .= "<textarea name=\"testimonial\" id=\"testimonial\" rows=\"4\" cols=\"50\"></textarea>";
 		}
 		
+		if ( $extracted_atts['category'] ) {
+			$output .= "<input type=\"hidden\" name=\"category\" value=\"". $extracted_atts['category'] ."\" />";
+		}
+		
 		$output .= "<input type=\"hidden\" name=\"testimonial_nonce\" value=\"". $nonce ."\" />";
 		$output .= "<br /><br />";
 		
-		$output .= "<input type=\"submit\" name=\"submit_testimonial\" id=\"submit_testimonial\" value=\"". __('Submit', 'elm') . "\" />";
+		$output .= "<input type=\"submit\" name=\"submit_testimonial\" id=\"submit_testimonial\" value=\"". $settings['forms']['testimonial_form']['submit_label']  . "\" />";
 		$output .= "</form>";
 	
 		return $output;

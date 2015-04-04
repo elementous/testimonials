@@ -87,7 +87,15 @@ class ELM_Testimonials {
 				add_post_meta( $testimonial_id, 'testimonial_image', $args['image'] );
 			if ( isset ( $args['rating'] ) )
 				add_post_meta( $testimonial_id, 'testimonial_rating', $args['rating'] );
+			if ( isset( $args['category'] ) ) {
+				$cat_id = get_term_by( 'name', $args['category'], 'testimonials_category' );
+				$cat_id = $cat_id->term_id; 
 				
+				if ( $cat_id ) {
+					wp_set_post_terms( $testimonial_id, array( $cat_id ), 'testimonials_category' );
+				}
+			}
+			
 			do_action( 'elm_add_testimonial', $testimonial_id, $args );
 				
 			return true;
@@ -117,6 +125,32 @@ class ELM_Testimonials {
                  'title', 'editor', 'custom-fields'
             ) 
         ) );
+		
+		// Add new taxonomy, make it hierarchical (like categories)
+		$labels = array(
+			'name'              => _x( 'Categories', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Categories' ),
+			'all_items'         => __( 'All Categories' ),
+			'parent_item'       => __( 'Parent Category' ),
+			'parent_item_colon' => __( 'Parent Category:' ),
+			'edit_item'         => __( 'Edit Category' ),
+			'update_item'       => __( 'Update Category' ),
+			'add_new_item'      => __( 'Add New Category' ),
+			'new_item_name'     => __( 'New Genre Category' ),
+			'menu_name'         => __( 'Categories' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'testimonials_category' ),
+		);
+
+		register_taxonomy( 'testimonials_category', array( 'elm_testimonials' ), $args );
     }
 	
 	/**
