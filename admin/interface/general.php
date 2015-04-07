@@ -12,7 +12,7 @@ $settings = elm_testimonials_get_settings();
 	$elm_testimonials_admin->messages_html();
 	$elm_testimonials_admin->settings_page_tabs_html();
 	?>
-	<h3><?php _e('General', 'elm'); ?></h3>
+	<h3><?php _e('General settings', 'elm'); ?></h3>
 			
     <form action="" method="post">
         <table class="form-table">
@@ -24,7 +24,7 @@ $settings = elm_testimonials_get_settings();
 				<input type="checkbox" name="moderate_testimonials" id="moderate-testimonials" value="1" <?php checked( $settings['general']['moderate_testimonials'] ); ?> />
 				<label for="moderate-testimonials"><?php _e('Moderate testimonials', 'elm'); ?></label>
 			
-				<p class="description"><?php _e('When this option is enabled, then the submitted testimonial status will be set to draft, otherwise it will be published directly.', 'elm'); ?></p>
+				<p class="description"><?php _e('Hold testimonials for moderation before publishing.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -36,7 +36,7 @@ $settings = elm_testimonials_get_settings();
 					
 						<label for="notifications">
 						<input type="checkbox" name="notifications" id="notifications" value="1" <?php checked( $settings['general']['notifications'] ); ?> />
-						<?php _e('Notify about every new feedback', 'elm'); ?></label>
+						<?php _e('Notify administrator about every new testimonial', 'elm'); ?></label>
 						<br />
 
 						<label for="notifications-email"><?php _e('Email:', 'elm'); ?>
@@ -45,7 +45,7 @@ $settings = elm_testimonials_get_settings();
 						
 					</fieldset>
 					
-					<p class="description"><?php _e('Some text.', 'elm'); ?></p>
+					<p class="description"><?php _e('Get notifications about every new testimonial.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
