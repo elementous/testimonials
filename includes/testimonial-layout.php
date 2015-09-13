@@ -10,7 +10,7 @@ function elm_get_testimonial_layout( $args ) {
 	
 	switch ( $args['layout'] ) {
 	
-	case 'layout1':
+	case 'simple_grid':
 	
 		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 style-5 style-11" id="testimonial-id-'. $args['id'] .'">';
 		
