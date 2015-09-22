@@ -19,6 +19,83 @@ class ELM_Testimonials {
 		
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_js_and_css' ) );
 		add_action( 'elm_add_testimonial', array( $this, 'notify_about_new_testimonial' ), 10, 2 );
+		add_action( 'wp_footer', array( $this, 'footer' ) );
+	}
+	
+	function footer() {
+	?>
+    <script>
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var simple           = document.querySelector('.js_simple');
+            var percentage       = document.querySelector('.js_percentage');
+            var rewind           = document.querySelector('.js_rewind');
+            var rewind_percentage = document.querySelector('.js_rewind_percentage');
+            var variableWidth    = document.querySelector('.js_variablewidth');
+            var multiSlides      = document.querySelector('.js_multislides');
+            var ease             = document.querySelector('.js_ease');
+            var events           = document.querySelector('.js_events');
+
+            lory(simple, {
+                infinite: 1
+            });
+
+            lory(percentage, {
+                infinite: 1
+            });
+
+            lory(rewind, {
+                rewind: true
+            });
+
+            lory(rewind_percentage, {
+                rewind: true
+            });
+
+            lory(variableWidth, {
+                rewind: true
+            });
+
+            lory(multiSlides, {
+                infinite: 4,
+                slidesToScroll: 4
+            });
+
+            lory(ease, {
+                infinite: 4,
+                slidesToScroll: 4,
+                slideSpeed: 300,
+                ease: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+            });
+			/*
+            function handleEvent(e) {
+                var newSpan = document.createElement('span');
+                var time = new Date();
+                time = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() + ',' + time.getMilliseconds();
+                var newContent = document.createTextNode('[' + time + '] Event dispatched: "' + e.type + '"');
+                newSpan.appendChild(newContent);
+                e.target.nextElementSibling.appendChild(newSpan);
+            }
+
+            events.addEventListener('before.lory.init', handleEvent);
+            events.addEventListener('after.lory.init', handleEvent);
+            events.addEventListener('before.lory.slide', handleEvent);
+            events.addEventListener('after.lory.slide', handleEvent);
+
+            events.addEventListener('on.lory.resize', handleEvent);
+            events.addEventListener('on.lory.touchend', handleEvent);
+            events.addEventListener('on.lory.touchmove', handleEvent);
+            events.addEventListener('on.lory.touchstart', handleEvent);
+            events.addEventListener('on.lory.destroy', handleEvent);
+
+            lory(events, {
+                infinite: 1
+            });*/
+        });
+    </script>
+	
+	<?php
 	}
 	
 	/**
@@ -158,11 +235,11 @@ class ELM_Testimonials {
 	*/
 	function enqueue_js_and_css() {
 		wp_enqueue_style( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
-		wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
+		//wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
 		wp_enqueue_style( 'elm-font-awesome', ELM_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
 		
 		wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
-		wp_enqueue_script( 'elm-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
+		wp_enqueue_script( 'elm-lory', ELM_TESTIMONIALS_URL . '/assets/js/lory.min.js', array( 'jquery' ) );
 	}
 	
 	// Install plugin
