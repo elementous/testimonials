@@ -33,28 +33,6 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="layout"><?php _e('Layout', 'elm'); ?></label>
-                </th>
-                <td>
-					<select name="layout" id="layout">
-						<?php
-						foreach( elm_admin_get_layout_options() as $key => $value ) :
-							echo '<option value="'. $key .'">'. $value .'</option>';
-						endforeach;
-						?>
-					</select>
-                </td>
-            </tr>
-			<tr>
-                <th scope="row">
-                    <label for="color"><?php _e('Color', 'elm'); ?></label>
-                </th>
-                <td>
-					<input type="text" name="color" id="color" class="regular-text" value="" />
-                </td>
-            </tr>
-			<tr>
-                <th scope="row">
                     <label for="show-image"><?php _e('Show Image', 'elm'); ?></label>
                 </th>
                 <td>
@@ -101,6 +79,44 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="layout"><?php _e('Layout', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="layout" id="layout">
+						<?php
+						foreach( elm_admin_get_layout_options() as $key => $value ) :
+							echo '<option value="'. $key .'">'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="color"><?php _e('Text Color', 'elm'); ?></label>
+                </th>
+                <td>
+					<input type="text" name="color" id="color" class="regular-text" value="" />
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="background_color"><?php _e('Background Color', 'elm'); ?></label>
+                </th>
+                <td>
+					<input type="text" name="background_color" id="background_color" class="regular-text" value="" />
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="border_radius"><?php _e('Border Radius', 'elm'); ?></label>
+                </th>
+                <td>
+					<input type="text" name="border_radius" id="border_radius" class="regular-text" value="" />
                 </td>
             </tr>
         </table>
