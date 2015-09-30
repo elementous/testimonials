@@ -25,14 +25,6 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="name"><?php _e('Testimonial ID', 'elm'); ?></label>
-                </th>
-                <td>
-					<input type="text" name="testimonial" id="testimonial" class="regular-text" value="all" />
-                </td>
-            </tr>
-			<tr>
-                <th scope="row">
                     <label for="show-image"><?php _e('Show Image', 'elm'); ?></label>
                 </th>
                 <td>
@@ -64,7 +56,7 @@ $settings = elm_testimonials_get_settings();
                     <label for="category"><?php _e('Category', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="category" id="category" class="regular-text" value="" />
+					<?php elm_admin_get_cats_select(); ?>
                 </td>
             </tr>
 			<tr>
@@ -97,6 +89,20 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
+                    <label for="item_width"><?php _e('Width', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="item_width" id="item_width">
+					<?php
+						for( $i = 10; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'">'. $i .'%</option>';
+						}
+					?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
                     <label for="color"><?php _e('Text Color', 'elm'); ?></label>
                 </th>
                 <td>
@@ -113,10 +119,94 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="border_radius"><?php _e('Border Radius', 'elm'); ?></label>
+                    <label for="item_border_radius"><?php _e('Border Radius', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="border_radius" id="border_radius" class="regular-text" value="" />
+					<select name="item_border_radius" id="item_border_radius">
+					<?php
+						for( $i = 1; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'">'. $i .'px</option>';
+						}
+					?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="border_radius"><?php _e('Padding', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="item_padding" id="item_padding">
+					<?php
+						for( $i = 1; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'">'. $i .'px</option>';
+						}
+					?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="background_color"><?php _e('Slide Speed', 'elm'); ?></label>
+                </th>
+                <td>
+					<input type="text" name="background_color" id="background_color" class="regular-text" value="" />
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="auto_play"><?php _e('Auto Play', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="auto_play">
+						<?php
+						foreach( elm_admin_get_slide_autoplay_options() as $key => $value ) :
+							echo '<option value="'. $key .'">'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="navigation"><?php _e('Navigation', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="navigation">
+						<?php
+						foreach( elm_admin_get_slide_navigation_options() as $key => $value ) :
+							echo '<option value="'. $key .'">'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="pagination"><?php _e('Pagination', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="pagination">
+						<?php
+						foreach( elm_admin_get_pagination_options() as $key => $value ) :
+							echo '<option value="'. $key .'">'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="stop_on_hover"><?php _e('Stop On Hover', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="stop_on_hover">
+						<?php
+						foreach( elm_admin_get_stoponhover_options() as $key => $value ) :
+							echo '<option value="'. $key .'">'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
                 </td>
             </tr>
         </table>
