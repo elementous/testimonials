@@ -92,11 +92,20 @@ class ELM_Testimonials_Admin {
 				$args = array(
 					'name' => esc_attr( $_POST['name'] ),
 					'layout' => esc_attr( $_POST['layout'] ),
-					'color' => esc_attr( $_POST['color'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
 					'category' => esc_attr( $_POST['category'] ),
-					'order_by' => esc_attr( $_POST['order_by'] )
+					'order_by' => esc_attr( $_POST['order_by'] ),
+					'width' => esc_attr( $_POST['item_width'] ),
+					'text_color' => esc_attr( $_POST['text'] ),
+					'background_color' => esc_attr( $_POST['background'] ),
+					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
+					'padding' => esc_attr( $_POST['item_padding'] ),
+					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
+					'auto_play' => esc_attr( $_POST['auto_play'] ),
+					'navigation' => esc_attr( $_POST['navigation'] ),
+					'pagination' => esc_attr( $_POST['pagination'] ),
+					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
 				);
 				
 				// Add shortcode

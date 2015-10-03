@@ -12,10 +12,31 @@ function elm_get_testimonial_layout( $args ) {
 	
 	case 'simple_grid':
 	
-		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 style-5 style-11" id="testimonial-id-'. $args['id'] .'">';
+		$style = '';
+		$inline_css = '';
+		
+		if ( !empty( $args['width'] ) )
+			$inline_css .= 'width: '. $args['width'] . ';';
+			
+		if ( !empty( $args['text_color'] ) )
+			$inline_css .= 'color: '. $args['text_color'] . ';';	
+			
+		if ( !empty( $args['background_color'] ) )
+			$inline_css .= 'background: '. $args['background_color'] . ';';	
+			
+		if ( !empty( $args['border_radius'] ) )
+			$inline_css .= 'border-radius: '. $args['border_radius'] . ';';	
+			
+		if ( !empty( $args['padding'] ) )
+			$inline_css .= 'padding: '. $args['padding'] . ';';
+			
+		if ( !empty( $inline_css ) )
+			$style .= 'style="' . $inline_css . '"';
+	
+		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6" id="testimonial-id-'. $args['id'] .'">';
 		
 		if ( isset( $args['testimonial'] ) ) {
-			$output .= '<p class="quotes">'. $args['testimonial'] .'</p>';
+			$output .= '<p class="quotes" '. $style .'>'. $args['testimonial'] .'</p>';
 			$output .= '<div class="container1-right">';
 			
 			if ( isset( $args['show_image'] ) && $args['show_image'] == 1 ) {

@@ -11,7 +11,7 @@ class ELM_Testimonials_Shortcode_Generator {
 	}
 	
 	function init() {
-	
+
 	}
 	
 	/**

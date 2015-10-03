@@ -39,3 +39,9 @@
 	background: url('../img/ajax-loader.gif');
 	margin: 20px 0 20px 0;
 }
+
+.elm-color {
+	width: 100px !important;
+	padding: 2px !important;
+	margin: 0 0 0 5px;
+}

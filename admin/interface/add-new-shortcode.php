@@ -106,7 +106,12 @@ $settings = elm_testimonials_get_settings();
                     <label for="color"><?php _e('Text Color', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="color" id="color" class="regular-text" value="" />
+					<div class="elm-ur-color">
+						<div id="text_color_picker" class="colorSelector small-text">
+							<div></div>
+						</div>
+							<input class="elm-color small-text elm-typography elm-typography-color" name="text" id="text_color" type="text" value="" />
+					</div>
                 </td>
             </tr>
 			<tr>
@@ -114,7 +119,12 @@ $settings = elm_testimonials_get_settings();
                     <label for="background_color"><?php _e('Background Color', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="background_color" id="background_color" class="regular-text" value="" />
+					<div class="elm-ur-color">
+						<div id="background_color_picker" class="colorSelector small-text">
+							<div></div>
+						</div>
+							<input class="elm-color small-text regular-text" name="background" id="background_color" type="text" value="" />
+					</div>
                 </td>
             </tr>
 			<tr>
@@ -133,7 +143,7 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="border_radius"><?php _e('Padding', 'elm'); ?></label>
+                    <label for="item_padding"><?php _e('Padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="item_padding" id="item_padding">
@@ -147,10 +157,10 @@ $settings = elm_testimonials_get_settings();
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="background_color"><?php _e('Slide Speed', 'elm'); ?></label>
+                    <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="background_color" id="background_color" class="regular-text" value="" />
+					<input type="text" name="slide_speed" id="slide_speed" class="regular-text" value="" />
                 </td>
             </tr>
 			<tr>

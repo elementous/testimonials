@@ -18,13 +18,18 @@ class ELM_Testimonials {
 		$this->create_post_type();
 		
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_js_and_css' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_js_and_css' ) );
 		add_action( 'elm_add_testimonial', array( $this, 'notify_about_new_testimonial' ), 10, 2 );
 		add_action( 'wp_footer', array( $this, 'footer' ) );
+		
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
+		
+		//print_r( $shortcodes );
 	}
 	
 	function footer() {
 	?>
-    <script>
+    <script type="text/javascript">
 		jQuery( document ).ready(function( $ ) {
 			$('.owl-carousel').owlCarousel({
 				loop:true,
@@ -190,6 +195,11 @@ class ELM_Testimonials {
 		
 		wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
 		wp_enqueue_script( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ), '1.0', true );
+	}
+	
+	function admin_enqueue_js_and_css() {
+		wp_enqueue_style( 'elm-colorpicker', ELM_TESTIMONIALS_URL . '/assets/css/colorpicker.min.css' );
+		wp_enqueue_script( 'elm-colorpicker', ELM_TESTIMONIALS_URL . '/assets/js/colorpicker.min.js' );
 	}
 	
 	// Install plugin

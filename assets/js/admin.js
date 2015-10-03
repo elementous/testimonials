@@ -2,6 +2,33 @@ jQuery(document).ready(function(){
 	elm_testimonials_media_uploader();
 	
 	elm_testimonials_live_preview();
+	
+	if ( jQuery().ColorPicker ) {
+ 		jQuery( '.elm-ur-color' ).each( function () {
+ 			var option_id = jQuery( this ).find( '.elm-color' ).attr( 'id' );
+			var color = jQuery( this ).find( '.elm-color' ).val();
+			var picker_id = option_id += '_picker';
+
+	 		jQuery( '#' + picker_id ).children( 'div' ).css( 'backgroundColor', color );
+			jQuery( '#' + picker_id ).ColorPicker({
+				
+				color: color,
+				onShow: function ( colpkr ) {
+					jQuery( colpkr ).fadeIn( 200 );
+					return false;
+				},
+				onHide: function ( colpkr ) {
+					jQuery( colpkr ).fadeOut( 200 );
+					return false;
+				},
+				onChange: function ( hsb, hex, rgb ) {
+					jQuery( '#' + picker_id ).children( 'div' ).css( 'backgroundColor', '#' + hex );
+					jQuery( '#' + picker_id ).next( 'input' ).attr( 'value', '#' + hex );
+					
+				}
+			});
+ 		});
+ 	}
 });
 
 /**

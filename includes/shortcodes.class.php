@@ -222,7 +222,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 	 * @return string
 	 */
 	function testimonial_shortcode( $atts ) {
-		$attribute = shortcode_atts( array(
+	/*	$attribute = shortcode_atts( array(
 			'testimonial' => 'all',
 			'category' => '',
 			'order_by' => '',
@@ -230,20 +230,21 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			'layout' => 'simple_grid_2',
 			'show_image' => 1,
 			'show_rating' => 1
-		), $atts );
+		), $atts );*/
 		
-		if ( $attribute['testimonial'] == 'all' ) :
-			$testimonial_query = elm_get_testimonial( 'all', 'publish', esc_attr( $attribute['order_by'] ) );
-		else :
-			$testimonial_query = elm_get_testimonial( esc_attr( $attribute['testimonial'] ), 'publish', esc_attr( $attribute['order_by'] ) );
-		endif;
+		//if ( $atts['testimonial'] == 'all' ) :
+			$testimonial_query = elm_get_testimonial( 'all', 'publish', esc_attr( $atts['order_by'] ) );
+		//else :
+			//$testimonial_query = elm_get_testimonial( esc_attr( $atts['testimonial'] ), 'publish', esc_attr( $atts['order_by'] ) );
+		//endif;
 		
 		$output = '';
+		$args = array();
 		
-		$layout = esc_attr( $attribute['layout'] );
+		$args = array_merge( $atts, $args );
 		
 		// Add slider wrapper for specific layouts
-		switch ( $layout ) {
+		/*switch ( $layout ) {
 			case 'speech_bubble_theme':
 			
 			$output .= '<div class="testimonial-slider-container clearfix loading">
@@ -302,7 +303,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			$output .= '</div>';
 			
 			break;
-		}
+		}*/
 		
 		foreach( $testimonial_query as $post ) {
 			// Setup testimonial arguments
@@ -333,15 +334,15 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				$args['testimonial'] = esc_attr( $testimonial_content );
 			
 			$args['id'] = (int) $post->ID;
-			$args['layout'] = $layout;
-			$args['show_image'] = (int) $attribute['show_image'];
-			$args['show_rating'] = (int) $attribute['show_rating'];
+			//$args['layout'] = $layout;
+			//$args['show_image'] = (int) $attribute['show_image'];
+			//$args['show_rating'] = (int) $attribute['show_rating'];
 			
 			$output .= elm_get_testimonial_layout( $args );
 		}
 		
 		// Close slider wrapper for specific layouts
-		switch ( $layout ) {
+		/*switch ( $layout ) {
 			case 'speech_bubble_theme':
 			
 			$output .= '</div></div>';
@@ -352,7 +353,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			case 'glowing_slider_2':
 				$output .= '</div>';
 			break;
-		}
+		}*/
 		
 		return $output;
 	}
