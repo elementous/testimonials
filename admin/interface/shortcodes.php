@@ -67,7 +67,8 @@ $settings = elm_testimonials_get_settings();
 						[elm_testimonial_sc name="<?php echo $shortcode_index; ?>"]
 					</td>
 					<td>
-						<a href="<?php echo $elm_testimonials->shortcode_generator->get_shortcode_delete_url( $shortcode_index ); ?>"><img src="<?php echo ELM_TESTIMONIALS_URL . '/assets/img/delete.png' ; ?>" class="delete-image" alt="" /></a>
+						<a href="#">Edit</a> 
+						<a href="<?php echo $elm_testimonials->shortcode_generator->get_shortcode_delete_url( $shortcode_index ); ?>"><?php _e('Delete', 'elm'); ?></a>
 					</td>	
 				</tr>
 				<?php

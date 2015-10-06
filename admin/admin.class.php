@@ -414,10 +414,12 @@ class ELM_Testimonials_Admin {
      * Menu
      */
 	function menu() {
-        add_menu_page( __( 'General', 'elm' ), __( 'Testimonials', 'elm' ), 'manage_options', 'elm_testimonials', array( $this, 'settings_general_content' ), null );
+        add_submenu_page( 'edit.php?post_type=elm_testimonials', __( 'General', 'elm' ), __( 'Settings', 'elm' ), 'manage_options', 'elm_testimonials', array( $this, 'settings_general_content' ), null );
 		add_submenu_page( null, __( 'Form', 'elm' ), __( 'Form', 'elm' ), 'manage_options', 'elm_testimonials_forms', array( $this, 'settings_forms_content' ), null );
 		add_submenu_page( null, __( 'Display', 'elm' ), __( 'Display', 'elm' ), 'manage_options', 'elm_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
 		add_submenu_page( null, __( 'Add New Shortcode', 'elm' ), __( 'Add New Shortcode', 'elm' ), 'manage_options', 'elm_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
+		
+		
 	}
 	
 	/*

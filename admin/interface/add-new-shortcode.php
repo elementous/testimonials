@@ -51,14 +51,16 @@ $settings = elm_testimonials_get_settings();
 					</select>
                 </td>
             </tr>
+			<?php if ( elm_admin_get_cats_select() ) : ?>
 			<tr>
                 <th scope="row">
                     <label for="category"><?php _e('Category', 'elm'); ?></label>
                 </th>
                 <td>
-					<?php elm_admin_get_cats_select(); ?>
+					<?php echo elm_admin_get_cats_select(); ?>
                 </td>
             </tr>
+			<?php endif; ?>
 			<tr>
                 <th scope="row">
                     <label for="order-by"><?php _e('Order By', 'elm'); ?></label>

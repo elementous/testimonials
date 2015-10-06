@@ -1,6 +1,6 @@
 <?php
 /*
-  Plugin Name: Testimonials by Elementous
+  Plugin Name: Testimonials Manager
   Plugin URI: https://www.elementous.com
   Description: Easily add testimonials to your site.
   Author: Elementous

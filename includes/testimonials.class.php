@@ -31,22 +31,17 @@ class ELM_Testimonials {
 	?>
     <script type="text/javascript">
 		jQuery( document ).ready(function( $ ) {
-			$('.owl-carousel').owlCarousel({
-				loop:true,
-				margin:10,
-				nav:true,
-				responsive:{
-					0:{
-						items:1
-					},
-					600:{
-						items:3
-					},
-					1000:{
-						items:5
-					}
-				}
-			});
+			 jQuery("#owl-one-slide").owlCarousel({
+				  navigation : true,
+				  slideSpeed : 300,
+				  paginationSpeed : 400,
+				  singleItem:true,
+				  items : 1, 
+				  itemsDesktop : false,
+				  itemsDesktopSmall : false,
+				  itemsTablet: false,
+				  itemsMobile : false
+			  });
 		});
     </script>
 	

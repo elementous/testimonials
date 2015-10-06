@@ -7,7 +7,9 @@
 */
 function elm_admin_get_layout_options() {
 	$options = array(
-		'simple_grid' => __('Simple grid', 'elm')
+		'simple_grid' => __('Grid', 'elm'),
+		'multiple_testimonials' => __('Slider (Multiple slides)', 'elm'),
+		'one_slide' => __('Slider (One slide)', 'elm')
 	);
 	
 	return $options;
@@ -94,11 +96,15 @@ function elm_admin_get_stoponhover_options() {
 function elm_admin_get_cats_select() {
 	$categories = get_terms( 'testimonials_category', 'orderby=count&hide_empty=0' );
 	
+	$output = '';
+	
 	if ( $categories ) {
-		echo '<select name="category" id="category">';
+		$output .= '<select name="category" id="category">';
 		foreach( $categories as $k => $category ) {
-			echo '<option value="'. $category->term_id .'">'. $category->name .'</option>';
+			$output .= '<option value="'. $category->term_id .'">'. $category->name .'</option>';
 		}
-		echo '</select>';
+		$output .= '</select>';
 	}
+	
+	return $output;
 }

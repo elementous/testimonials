@@ -244,66 +244,13 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		$args = array_merge( $atts, $args );
 		
 		// Add slider wrapper for specific layouts
-		/*switch ( $layout ) {
-			case 'speech_bubble_theme':
+		switch ( $args['layout'] ) {
+			case 'one_slide':
 			
-			$output .= '<div class="testimonial-slider-container clearfix loading">
-			<div id="slider" class="testimonial-slider">';
-			break;
-			case 'glowing_slider_1':
-			$output .= '<div class="testimonial_wrap">';
-			
-			$output .= '<div class="testimonials">';
-			
-			foreach( $testimonial_query as $post ) {
-				$name = get_post_meta( $post->ID, 'testimonial_name', true );
-				$link = get_post_meta( $post->ID, 'testimonial_link', true );
-				$testimonial_content = $post->post_content;
-				
-				$output .= '<div class="elm-testimonial" id="testimonial-'. $post->ID .'"><p>'. $testimonial_content .'<span class="testi-author">- '. $name .' ('. $link .')</span></p></div>';
-			}
-			
-			$output .= '</div>';
-			
-			$output .= '<ul id="testimonials-authors" class="testimonials-authors">';
-			
-			foreach( $testimonial_query as $post ) {
-				$image = get_post_meta( $post->ID, 'testimonial_image', true );
-				
-				$output .= '<li id="testimonial-'. $post->ID .'"><img src="'. esc_url( $image ) .'" width="94" height="100"></li>';
-			}
-			
-			$output .= '</ul>';
+			$output .= '<div id="owl-one-slide" class="owl-carousel owl-theme">';
 
 			break;
-			case 'glowing_slider_2':
-			
-			$output .= '<div class="testimonial_wrap testimonial_wrap_author">
-			<ul id="testimonials-authors-3" class="testimonials-authors-3">
-			';
-			
-			foreach( $testimonial_query as $post ) {
-				$image = get_post_meta( $post->ID, 'testimonial_image', true );
-				$name = get_post_meta( $post->ID, 'testimonial_name', true );
-				$link = get_post_meta( $post->ID, 'testimonial_link', true );
-				
-				$output .= '<li id="testimonial-'. $post->ID .'"><img src="'. esc_url( $image ) .'" width="94" height="100"><div class="testimonial-hover"></div><p class="testi-author-3">- '. $name .' ('. $link .')</p></li>';
-			}
-			
-			$output .= '</ul>';
-			
-			$output .= '<div class="testimonials-3">';
-			
-			foreach( $testimonial_query as $post ) {
-				$testimonial_content = $post->post_content;
-				
-				$output .= '<div class="elm-testimonial-3" id="testimonial-'. $post->ID .'"><p>'. $testimonial_content .'</p></div>';
-			}
-			
-			$output .= '</div>';
-			
-			break;
-		}*/
+		}
 		
 		foreach( $testimonial_query as $post ) {
 			// Setup testimonial arguments
@@ -342,18 +289,13 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		}
 		
 		// Close slider wrapper for specific layouts
-		/*switch ( $layout ) {
-			case 'speech_bubble_theme':
+		switch ( $args['layout'] ) {
+			case 'one_slide':
 			
-			$output .= '</div></div>';
+			$output .= '</div>';
+
 			break;
-			case 'glowing_slider_1':
-				$output .= '</div>';
-			break;
-			case 'glowing_slider_2':
-				$output .= '</div>';
-			break;
-		}*/
+		}
 		
 		return $output;
 	}
