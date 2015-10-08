@@ -10,9 +10,11 @@ function elm_get_testimonial_layout( $args ) {
 
 	$style = '';
 	$inline_css = '';
+	$style_container = '';
+	$inline_container_css = '';
 		
 	if ( !empty( $args['width'] ) )
-		$inline_css .= 'width: '. $args['width'] . '%;';
+		$inline_container_css .= 'width: '. $args['width'] . '%;';
 		
 	if ( !empty( $args['text_color'] ) )
 		$inline_css .= 'color: '. $args['text_color'] . ';';	
@@ -28,12 +30,15 @@ function elm_get_testimonial_layout( $args ) {
 			
 	if ( !empty( $inline_css ) )
 		$style .= 'style="' . $inline_css . '"';
+		
+	if ( !empty( $inline_container_css ) )
+		$style_container .= 'style="' . $inline_container_css . '"';
 	
 	switch ( $args['layout'] ) {
 	
 	case 'simple_grid':
 
-		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'">';
+		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'" '. $style_container .'>';
 		
 		if ( isset( $args['testimonial'] ) ) {
 			$output .= '<p class="quotes" '. $style .'>'. $args['testimonial'] .'</p>';
@@ -70,7 +75,7 @@ function elm_get_testimonial_layout( $args ) {
 	
 	case 'one_slide':
 
-		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'">';
+		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'" '. $style_container .'>';
 		
 		if ( isset( $args['testimonial'] ) ) {
 			$output .= '<p class="quotes" '. $style .'>'. $args['testimonial'] .'</p>';
@@ -107,7 +112,7 @@ function elm_get_testimonial_layout( $args ) {
 	
 	case 'multiple_slides':
 
-		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'">';
+		$output = '<div itemscope itemtype="http://data-vocabulary.org/Person" class="container1 content6 testimonial-'. $args['id'] .'" '. $style_container .'>';
 		
 		if ( isset( $args['testimonial'] ) ) {
 			$output .= '<p class="quotes" '. $style .'>'. $args['testimonial'] .'</p>';

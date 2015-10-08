@@ -180,7 +180,7 @@ $settings = elm_testimonials_get_settings();
                 </td>
             </tr>
 			
-			<!--
+
 			<tr>
                 <th scope="row">
                     <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
@@ -255,7 +255,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			-->
+
         </table>
 		
 		<?php wp_nonce_field( 'elm_add_new_shortcode_page_action', 'elm_add_new_shortcode_page_nonce' ); ?>

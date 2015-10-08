@@ -3,10 +3,8 @@ list-style-type:none;
 }
 
 .container {
-	width:770px;
 	max-width:100%;
 	float:none;
-	background:#fff;
 	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -15,21 +13,9 @@ list-style-type:none;
 	padding:0 40px 60px;
 	}
 
-.large-container {
-	width:1040px;
-	max-width:100%;
-	float:none;
-	background:#fff;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	overflow:hidden;
-	margin:40px auto 0;
-	padding:40px;
-}
 
 .container1 {
-	width:30%;
+	/*width:30%;*/
 	margin-right:6%;
 	float:left;
 }
@@ -40,11 +26,6 @@ list-style-type:none;
 
 .container1 .quotes {
 	width:100%;
-	font-style:italic;
-	color:#525252;
-	position:relative;
-	line-height:2;
-	font-weight:100;
 	float:left;
 }
 
@@ -80,20 +61,10 @@ list-style-type:none;
 }
 
 .content5 .quotes,.content6 .quotes {
-	background:#bc645b;
-	color:#fff;
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	margin-bottom:0;
-	position:relative;
-	padding:10px;
+
 }
 
 .content6 .quotes {
-	background:#f5f5f5;
-	color:#525252;
-	border-radius:5px;
 }
 
 /* Slider theme */
