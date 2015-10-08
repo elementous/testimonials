@@ -8,7 +8,7 @@
 function elm_admin_get_layout_options() {
 	$options = array(
 		'simple_grid' => __('Grid', 'elm'),
-		'multiple_testimonials' => __('Slider (Multiple slides)', 'elm'),
+		'multiple_slides' => __('Slider (Multiple slides)', 'elm'),
 		'one_slide' => __('Slider (One slide)', 'elm')
 	);
 	

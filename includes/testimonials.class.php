@@ -40,7 +40,10 @@ class ELM_Testimonials {
 				  itemsMobile : true
 			  });
 			  
-			  
+			/*   jQuery("#owl-multiple-slides").owlCarousel({
+				  items : 2
+			  });
+			*/
 		});
     </script>
 	

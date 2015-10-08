@@ -247,8 +247,14 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		switch ( $args['layout'] ) {
 			case 'one_slide':
 			
-			$output .= '<div id="owl-one-slide" class="owl-carousel owl-theme">';
+			$output .= '<div id="owl-one-slide" class="owl-carousel owl-theme testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'">';
 
+			break;
+			
+			case 'multiple_slides':
+			
+			$output .= '<div id="owl-multiple-slides" class="owl-carousel owl-theme testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'">';
+			
 			break;
 		}
 		
@@ -293,7 +299,40 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			case 'one_slide':
 			
 			$output .= '</div>';
+			
+			// Slider JavaScript
+			$output .= '
+			<script type="text/javascript">
+				jQuery( document ).ready(function( $ ) {
+					jQuery(".testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'").owlCarousel({
+						singleItem: true,
+						items : 1, 
+						itemsDesktop : true,
+						itemsDesktopSmall : true,
+						itemsTablet: true,
+						itemsMobile : true
+					});
+				});
+			</script>
+			';
 
+			break;
+					
+			case 'multiple_slides':
+			
+			$output .= '</div>';
+			
+			// Slider JavaScript
+			$output .= '
+			<script type="text/javascript">
+				jQuery( document ).ready(function( $ ) {
+					jQuery(".testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'").owlCarousel({
+						items : 2
+					});
+				});
+			</script>
+			';
+			
 			break;
 		}
 		
