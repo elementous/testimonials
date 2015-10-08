@@ -151,6 +151,21 @@ list-style-type:none;
     background: #869791
 }
 
+.testimonial-form label {
+	width: 100%;
+	float: left;
+}
 
+.testimonial-form input[type="text"] {
+	width: 50%;
+}
+
+.testimonial-form textarea {
+	width: 70%;
+}
+
+.elm-error {
+	margin: 0 0 20px 0;
+}
 
 

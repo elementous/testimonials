@@ -124,6 +124,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			'category' => ''
 		), $atts );
 	
+		$output .= '<div class="testimonial-form">';
 		$output .= "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">";
 		
 		if ( (int) $settings['forms']['testimonial_form']['title_field_checkbox'] ) {
@@ -181,6 +182,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		
 		$output .= "<input type=\"submit\" name=\"submit_testimonial\" id=\"submit_testimonial\" value=\"". $settings['forms']['testimonial_form']['submit_label']  . "\" />";
 		$output .= "</form>";
+		$output .= '</div>';
 	
 		return $output;
 	}

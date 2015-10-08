@@ -21,6 +21,8 @@ $settings = elm_testimonials_get_settings();
                 </th>
                 <td>
 					<input type="text" name="name" id="name" class="regular-text" value="" />
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -35,6 +37,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -49,6 +53,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<?php if ( elm_admin_get_cats_select() ) : ?>
@@ -58,6 +64,8 @@ $settings = elm_testimonials_get_settings();
                 </th>
                 <td>
 					<?php echo elm_admin_get_cats_select(); ?>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<?php endif; ?>
@@ -73,6 +81,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -87,6 +97,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -101,6 +113,8 @@ $settings = elm_testimonials_get_settings();
 						}
 					?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -114,6 +128,8 @@ $settings = elm_testimonials_get_settings();
 						</div>
 							<input class="elm-color small-text elm-typography elm-typography-color" name="text" id="text_color" type="text" value="" />
 					</div>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -127,6 +143,8 @@ $settings = elm_testimonials_get_settings();
 						</div>
 							<input class="elm-color small-text regular-text" name="background" id="background_color" type="text" value="" />
 					</div>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -141,6 +159,8 @@ $settings = elm_testimonials_get_settings();
 						}
 					?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -155,14 +175,20 @@ $settings = elm_testimonials_get_settings();
 						}
 					?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
+			
+			<!--
 			<tr>
                 <th scope="row">
                     <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
                 </th>
                 <td>
 					<input type="text" name="slide_speed" id="slide_speed" class="regular-text" value="" />
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -177,6 +203,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -191,6 +219,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -205,6 +235,8 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -219,8 +251,11 @@ $settings = elm_testimonials_get_settings();
 						endforeach;
 						?>
 					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
+			-->
         </table>
 		
 		<?php wp_nonce_field( 'elm_add_new_shortcode_page_action', 'elm_add_new_shortcode_page_nonce' ); ?>
