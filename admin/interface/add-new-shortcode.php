@@ -6,7 +6,7 @@ global $elm_testimonials_admin;
 
 $settings = elm_testimonials_get_settings();
 ?>
-<div class="wrap testimonials">
+<div class="wrap testimonials add-new-testimonial">
 	<?php 
 	$elm_testimonials_admin->messages_html();
 	$elm_testimonials_admin->settings_page_tabs_html();
@@ -101,7 +101,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-width">
                 <th scope="row">
                     <label for="item_width"><?php _e('Width', 'elm'); ?></label>
                 </th>
@@ -117,7 +117,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-text-color">
                 <th scope="row">
                     <label for="color"><?php _e('Text Color', 'elm'); ?></label>
                 </th>
@@ -132,7 +132,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-background-color">
                 <th scope="row">
                     <label for="background_color"><?php _e('Background Color', 'elm'); ?></label>
                 </th>
@@ -147,7 +147,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-border-radius">
                 <th scope="row">
                     <label for="item_border_radius"><?php _e('Border Radius', 'elm'); ?></label>
                 </th>
@@ -163,7 +163,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-padding">
                 <th scope="row">
                     <label for="item_padding"><?php _e('Padding', 'elm'); ?></label>
                 </th>
@@ -180,8 +180,8 @@ $settings = elm_testimonials_get_settings();
                 </td>
             </tr>
 			
-
-			<tr>
+			
+			<tr class="js-slide-speed">
                 <th scope="row">
                     <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
                 </th>
@@ -191,7 +191,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
+			<tr class="js-auto-play">
                 <th scope="row">
                     <label for="auto_play"><?php _e('Auto Play', 'elm'); ?></label>
                 </th>
@@ -207,39 +207,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
-			<tr>
-                <th scope="row">
-                    <label for="navigation"><?php _e('Navigation', 'elm'); ?></label>
-                </th>
-                <td>
-					<select name="navigation">
-						<?php
-						foreach( elm_admin_get_slide_navigation_options() as $key => $value ) :
-							echo '<option value="'. $key .'">'. $value .'</option>';
-						endforeach;
-						?>
-					</select>
-					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
-                </td>
-            </tr>
-			<tr>
-                <th scope="row">
-                    <label for="pagination"><?php _e('Pagination', 'elm'); ?></label>
-                </th>
-                <td>
-					<select name="pagination">
-						<?php
-						foreach( elm_admin_get_pagination_options() as $key => $value ) :
-							echo '<option value="'. $key .'">'. $value .'</option>';
-						endforeach;
-						?>
-					</select>
-					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
-                </td>
-            </tr>
-			<tr>
+			<tr class="js-stop-on-hover">
                 <th scope="row">
                     <label for="stop_on_hover"><?php _e('Stop On Hover', 'elm'); ?></label>
                 </th>

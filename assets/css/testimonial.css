@@ -139,4 +139,7 @@ list-style-type:none;
 	margin: 0 0 20px 0;
 }
 
-
+.container1-right img {
+	width: 75px !important;
+	height: 75px !important;
+}

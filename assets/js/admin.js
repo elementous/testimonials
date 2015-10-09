@@ -3,6 +3,10 @@ jQuery(document).ready(function(){
 	
 	elm_testimonials_live_preview();
 	
+	elm_add_new_shortcode_default();
+	
+	elm_add_new_shortcode();
+	
 	if ( jQuery().ColorPicker ) {
  		jQuery( '.elm-ur-color' ).each( function () {
  			var option_id = jQuery( this ).find( '.elm-color' ).attr( 'id' );
@@ -137,4 +141,41 @@ function elm_testimonials_media_uploader() {
 		uploadID.val(imgurl); 
 		tb_remove();
 	}
+}
+
+function elm_add_new_shortcode_default() {
+	jQuery( '.js-slide-speed' ).hide();
+	jQuery( '.js-auto-play' ).hide();
+	jQuery( '.js-stop-on-hover' ).hide();
+
+	jQuery( '.add-new-testimonial .js-width td select' ).val('50');
+	jQuery( '.add-new-testimonial .js-text-color td input[type="text"]' ).val('#000000');
+	jQuery( '.add-new-testimonial .js-background-color td input[type="text"]' ).val('#ededed');
+	jQuery( '.add-new-testimonial .js-border-radius td select' ).val('5');
+	jQuery( '.add-new-testimonial .js-padding td select' ).val('5');
+	jQuery( '.add-new-testimonial .js-slide-speed td input[type="text"]' ).val('400');
+}
+
+function elm_add_new_shortcode() {
+	jQuery( 'select[name="layout"]' ).on( 'change', function() {
+		if ( jQuery(this).val() == 'simple_grid' ) {
+		
+			jQuery( '.js-slide-speed' ).hide();
+			jQuery( '.js-auto-play' ).hide();
+			jQuery( '.js-stop-on-hover' ).hide();
+			
+		} else if ( jQuery(this).val() == 'multiple_slides' ) {
+		
+			jQuery( '.js-slide-speed' ).show();
+			jQuery( '.js-auto-play' ).show();
+			jQuery( '.js-stop-on-hover' ).show();
+			
+		} else if ( jQuery(this).val() == 'one_slide' ) {
+		
+			jQuery( '.js-slide-speed' ).show();
+			jQuery( '.js-auto-play' ).show();
+			jQuery( '.js-stop-on-hover' ).show();
+			
+		}
+	});
 }
