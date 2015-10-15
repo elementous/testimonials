@@ -15,8 +15,10 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 	}
 	
 	function init() {
+		static $submit_testimonial;
+	
 		// Process front-end testimonial form
-		if ( isset( $_POST['submit_testimonial'] ) && wp_verify_nonce( $_POST['testimonial_nonce'], 'testimonial_form' ) ) {
+		if ( isset( $_POST['submit_testimonial'] ) && wp_verify_nonce( $_POST['testimonial_nonce'], 'testimonial_form' ) && $submit_testimonial == null ) {
 			global $testimonial_form_messages;
 			
 			$settings = elm_testimonials_get_settings();
@@ -90,6 +92,8 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			} else {
 				$testimonial_form_messages['error'][] = $settings['forms']['testimonial_form']['error_message'];
 			}
+			
+			$submit_testimonial = true;
 		}
 	}
 	
