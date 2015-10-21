@@ -66,6 +66,23 @@ class ELM_Testimonials_Shortcode_Generator {
 	}
 	
 	/**
+	 * Update shortcode
+	 *
+     * @param array $args
+     */
+	function update_shortcode( $args ) {
+		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
+	
+		// Check if shortcode does not exist
+		if ( ! $this->get_shortcode( $args['name'] ) ) {
+			$index = strtolower( $args['name'] );
+			$shortcodes[$index] = $args;
+			
+			update_option( 'elm_testimonials_shortcodes', $shortcodes );
+		}
+	}
+	
+	/**
 	 * Get shortcode from the database
 	 *
      * @param string $name
@@ -116,6 +133,18 @@ class ELM_Testimonials_Shortcode_Generator {
 	function get_add_new_shortcode_url() {
 		$url = add_query_arg( array( 'page' => 'elm_testimonials_add_new_shortcode' ), admin_url( 'admin.php' ) );
 
+		return $url;
+	}
+	
+	/**
+	 * Get shortcode edit URL
+	 *
+     */
+	function get_shortcode_edit_url( $name ) {
+		$admin_url = admin_url( 'admin.php' );
+		
+		$url = wp_nonce_url( add_query_arg( array( 'page' => 'elm_testimonials_edit_shortcode', 'elm_edit_shortcode' => $name ), $admin_url ), 'elm_edit_shortcode_action' );
+		
 		return $url;
 	}
 	

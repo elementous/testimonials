@@ -418,6 +418,7 @@ class ELM_Testimonials_Admin {
 		add_submenu_page( null, __( 'Form', 'elm' ), __( 'Form', 'elm' ), 'manage_options', 'elm_testimonials_forms', array( $this, 'settings_forms_content' ), null );
 		add_submenu_page( null, __( 'Display', 'elm' ), __( 'Display', 'elm' ), 'manage_options', 'elm_testimonials_shortcodes', array( $this, 'settings_shortcodes_content' ), null );
 		add_submenu_page( null, __( 'Add New Shortcode', 'elm' ), __( 'Add New Shortcode', 'elm' ), 'manage_options', 'elm_testimonials_add_new_shortcode', array( $this, 'settings_add_new_shortcode_content' ), null );
+		add_submenu_page( null, __( 'Edit Shortcode', 'elm' ), __( 'Edit Shortcode', 'elm' ), 'manage_options', 'elm_testimonials_edit_shortcode', array( $this, 'settings_edit_shortcode_content' ), null );
 		
 		
 	}
@@ -448,6 +449,13 @@ class ELM_Testimonials_Admin {
      */
 	function settings_add_new_shortcode_content() {
 		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/add-new-shortcode.php' );
+	}
+	
+	/*
+     * Add new shortcode page
+     */
+	function settings_edit_shortcode_content() {
+		include( ELM_TESTIMONIALS_ADMIN_PATH . '/interface/edit-shortcode.php' );
 	}
 	
 	/*
