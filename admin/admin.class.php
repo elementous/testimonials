@@ -97,8 +97,8 @@ class ELM_Testimonials_Admin {
 					'category' => esc_attr( $_POST['category'] ),
 					'order_by' => esc_attr( $_POST['order_by'] ),
 					'width' => esc_attr( $_POST['item_width'] ),
-					'text_color' => esc_attr( $_POST['text'] ),
-					'background_color' => esc_attr( $_POST['background'] ),
+					'text_color' => esc_attr( $_POST['txt_color'] ),
+					'background_color' => esc_attr( $_POST['bg_color'] ),
 					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
 					'padding' => esc_attr( $_POST['item_padding'] ),
 					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
@@ -341,6 +341,7 @@ class ELM_Testimonials_Admin {
 					 'email_field_checkbox' => 1,
 					 'image_field_checkbox' => 1,
 					 'rating_field_checkbox' => 1,
+					 'testimonial_field_checkbox' => 1,
 					 'title_field_label' => __('Title', 'elm'),
 					 'name_field_label' => __('Name', 'elm'),
 					 'title_of_the_person_field_label' => __('Title of the person', 'elm'),
@@ -464,7 +465,7 @@ class ELM_Testimonials_Admin {
 	function settings_page_tabs_html() {
 		$general_active  = ( basename( $_GET['page'] ) == 'elm_testimonials' ) ? 'nav-tab-active' : '';
 		$forms_active    = ( basename( $_GET['page'] ) == 'elm_testimonials_forms' ) ? 'nav-tab-active' : '';
-		$shortcodes_active    = ( basename( $_GET['page'] ) == 'elm_testimonials_shortcodes' || basename( $_GET['page'] ) == 'elm_testimonials_add_new_shortcode' ) ? 'nav-tab-active' : '';
+		$shortcodes_active    = ( basename( $_GET['page'] ) == 'elm_testimonials_shortcodes' || basename( $_GET['page'] ) == 'elm_testimonials_add_new_shortcode' || basename( $_GET['page'] ) == 'elm_testimonials_edit_shortcode'  ) ? 'nav-tab-active' : '';
         
         $html = '<h2 class="nav-tab-wrapper" id="elm-settings-tabs">' . "\r\n";
         $html .= '<a class="nav-tab ' . $general_active . '" id="elm-settings-general-tab" href="' . admin_url( 'admin.php?page=elm_testimonials' ) . '">' . __( 'General', 'elm' ) . '</a>' . "\r\n";

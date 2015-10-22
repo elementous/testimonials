@@ -41,7 +41,6 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="show_image" id="show-image">
 						<?php
 						foreach( elm_admin_get_show_image_options() as $key => $value ) :
-							$selected = 
 							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['show_image'], false ) .'>'. $value .'</option>';
 						endforeach;
 						?>
@@ -118,7 +117,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_width" id="item_width">
 					<?php
 						for( $i = 10; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'">'. $i .'%</option>';
+							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['width'], false ) .'>'. $i .'%</option>';
 						}
 					?>
 					</select>
@@ -135,7 +134,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 						<div id="text_color_picker" class="colorSelector small-text">
 							<div></div>
 						</div>
-							<input class="elm-color small-text elm-typography elm-typography-color" name="text" id="text_color" type="text" value="" />
+							<input class="elm-color small-text elm-typography elm-typography-color" name="txt_color" id="text_color" type="text" value="<?php echo $shortcode_settings['text_color']; ?>" />
 					</div>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
@@ -150,7 +149,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 						<div id="background_color_picker" class="colorSelector small-text">
 							<div></div>
 						</div>
-							<input class="elm-color small-text regular-text" name="background" id="background_color" type="text" value="" />
+							<input class="elm-color small-text regular-text" name="bg_color" id="background_color" type="text" value="<?php echo $shortcode_settings['background_color']; ?>" />
 					</div>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
@@ -164,7 +163,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_border_radius" id="item_border_radius">
 					<?php
 						for( $i = 1; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'">'. $i .'px</option>';
+							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['border_radius'], false ) .'>'. $i .'px</option>';
 						}
 					?>
 					</select>
@@ -180,7 +179,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_padding" id="item_padding">
 					<?php
 						for( $i = 1; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'">'. $i .'px</option>';
+							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['padding'], false ) .'>'. $i .'px</option>';
 						}
 					?>
 					</select>
@@ -195,7 +194,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
                     <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="text" name="slide_speed" id="slide_speed" class="regular-text" value="" />
+					<input type="text" name="slide_speed" id="slide_speed" class="regular-text" value="<?php echo $shortcode_settings['slide_speed']; ?>" />
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
@@ -208,7 +207,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="auto_play">
 						<?php
 						foreach( elm_admin_get_slide_autoplay_options() as $key => $value ) :
-							echo '<option value="'. $key .'">'. $value .'</option>';
+							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['auto_play'], false ) .'>'. $value .'</option>';
 						endforeach;
 						?>
 					</select>
@@ -224,7 +223,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="stop_on_hover">
 						<?php
 						foreach( elm_admin_get_stoponhover_options() as $key => $value ) :
-							echo '<option value="'. $key .'">'. $value .'</option>';
+							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['stop_on_hover'], false ) .'>'. $value .'</option>';
 						endforeach;
 						?>
 					</select>
