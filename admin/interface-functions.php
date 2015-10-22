@@ -93,7 +93,7 @@ function elm_admin_get_stoponhover_options() {
 	return $options;
 }
 
-function elm_admin_get_cats_select() {
+function elm_admin_get_cats_select( $selected_value = '' ) {
 	$categories = get_terms( 'testimonials_category', 'orderby=count&hide_empty=0' );
 	
 	$output = '';
@@ -101,7 +101,7 @@ function elm_admin_get_cats_select() {
 	if ( $categories ) {
 		$output .= '<select name="category" id="category">';
 		foreach( $categories as $k => $category ) {
-			$output .= '<option value="'. $category->term_id .'">'. $category->name .'</option>';
+			$output .= '<option value="'. $category->term_id .'" '. selected( $category->term_id, $selected_value, false ) .'>'. $category->name .'</option>';
 		}
 		$output .= '</select>';
 	}

@@ -64,10 +64,10 @@ $settings = elm_testimonials_get_settings();
 						<?php echo $shortcode['name']; ?>
 					</td>
 					<td>
-						[elm_testimonial_sc name="<?php echo $shortcode_index; ?>"]
+						[elm_testimonial_sc name="<?php echo $shortcode['name']; ?>"]
 					</td>
 					<td>
-						<a href="#">Edit</a> 
+						<a href="<?php echo $elm_testimonials->shortcode_generator->get_shortcode_edit_url( $shortcode_index ); ?>">Edit</a> 
 						<a href="<?php echo $elm_testimonials->shortcode_generator->get_shortcode_delete_url( $shortcode_index ); ?>"><?php _e('Delete', 'elm'); ?></a>
 					</td>	
 				</tr>

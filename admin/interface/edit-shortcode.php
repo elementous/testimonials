@@ -28,6 +28,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
                     <label for="name"><?php _e('Name', 'elm'); ?></label>
                 </th>
                 <td>
+					<input type="hidden" name="sc_name" id="sc-name" value="<?php echo $shortcode_settings['name']; ?>" />
 					<input type="text" name="name" id="name" class="regular-text" value="<?php echo $shortcode_settings['name']; ?>" />
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
@@ -71,7 +72,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
                     <label for="category"><?php _e('Category', 'elm'); ?></label>
                 </th>
                 <td>
-					<?php echo elm_admin_get_cats_select(); ?>
+					<?php echo elm_admin_get_cats_select( $shortcode_settings['category'] ); ?>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
@@ -117,7 +118,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_width" id="item_width">
 					<?php
 						for( $i = 10; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['width'], false ) .'>'. $i .'%</option>';
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['width'], false ) .'>'. $i .'%</option>';
 						}
 					?>
 					</select>
@@ -163,7 +164,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_border_radius" id="item_border_radius">
 					<?php
 						for( $i = 1; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['border_radius'], false ) .'>'. $i .'px</option>';
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['border_radius'], false ) .'>'. $i .'px</option>';
 						}
 					?>
 					</select>
@@ -179,7 +180,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<select name="item_padding" id="item_padding">
 					<?php
 						for( $i = 1; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'" '. selected( $key, $shortcode_settings['padding'], false ) .'>'. $i .'px</option>';
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['padding'], false ) .'>'. $i .'px</option>';
 						}
 					?>
 					</select>
@@ -234,10 +235,10 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 
         </table>
 		
-		<?php wp_nonce_field( 'elm_add_new_shortcode_page_action', 'elm_add_new_shortcode_page_nonce' ); ?>
+		<?php wp_nonce_field( 'elm_update_shortcode_page_action', 'elm_update_shortcode_page_nonce' ); ?>
 		
         <p class="submit">
-            <input type="submit" name="elm_add_new_shortcode" id="elm-add-new-shortcode" class="button button-primary" value="<?php _e('Save', 'elm'); ?>" />
+            <input type="submit" name="elm_update_shortcode" id="elm-update-shortcode" class="button button-primary" value="<?php _e('Update', 'elm'); ?>" />
         </p>
     </form>
 	

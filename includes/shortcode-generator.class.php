@@ -57,8 +57,8 @@ class ELM_Testimonials_Shortcode_Generator {
 		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 	
 		// Check if shortcode does not exist
-		if ( ! $this->get_shortcode( $args['name'] ) ) {
-			$index = strtolower( $args['name'] );
+		if ( ! $this->get_shortcode( $args['sc_name'] ) ) {
+			$index = strtolower( $args['sc_name'] );
 			$shortcodes[$index] = $args;
 			
 			update_option( 'elm_testimonials_shortcodes', $shortcodes );
@@ -74,12 +74,18 @@ class ELM_Testimonials_Shortcode_Generator {
 		$shortcodes = get_option( 'elm_testimonials_shortcodes' );
 	
 		// Check if shortcode does not exist
-		if ( ! $this->get_shortcode( $args['name'] ) ) {
-			$index = strtolower( $args['name'] );
-			$shortcodes[$index] = $args;
+	//	if ( ! $this->get_shortcode( $args['sc_name'] ) ) {
+			//$index = strtolower( $args['sc_name'] );
+			if ( $shortcodes[$args['sc_name']] )
+				unset( $shortcodes[$args['sc_name']] );
+			
+			$shortcodes[$args['sc_name']] = $args;
+			
+			//print_r($shortcodes);
+			//exit;
 			
 			update_option( 'elm_testimonials_shortcodes', $shortcodes );
-		}
+		//}
 	}
 	
 	/**

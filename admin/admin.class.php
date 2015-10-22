@@ -84,12 +84,13 @@ class ELM_Testimonials_Admin {
 			// Validate
 			if ( empty( $_POST['name'] ) ) :
 				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'elm' );
-			elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( $_POST['name'] ) ) ) :
+			elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ) ) ) :
 				$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'elm' );
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
 				$args = array(
+					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
 					'name' => esc_attr( $_POST['name'] ),
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
@@ -103,8 +104,8 @@ class ELM_Testimonials_Admin {
 					'padding' => esc_attr( $_POST['item_padding'] ),
 					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
 					'auto_play' => esc_attr( $_POST['auto_play'] ),
-					'navigation' => esc_attr( $_POST['navigation'] ),
-					'pagination' => esc_attr( $_POST['pagination'] ),
+					//'navigation' => esc_attr( $_POST['navigation'] ),
+					//'pagination' => esc_attr( $_POST['pagination'] ),
 					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
 				);
 				
@@ -112,6 +113,43 @@ class ELM_Testimonials_Admin {
 				$elm_testimonials->shortcode_generator->add_shortcode( $args );
 				
 				$this->message['update'][] = __( 'Shortcode added.', 'elm' );
+			}
+		}
+		
+		// Process update testimonials shortcode
+		if ( isset( $_POST['elm_update_shortcode'] ) && check_admin_referer( 'elm_update_shortcode_page_action', 'elm_update_shortcode_page_nonce' ) ) {
+			// Validate
+			if ( empty( $_POST['name'] ) ) :
+				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'elm' );
+			//elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( $_POST['name'] ) ) ) :
+				//$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'elm' );
+			endif;
+		
+			if ( empty( $this->message['error'] ) ) {
+				$args = array(
+					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
+					'name' => esc_attr( $_POST['name'] ),
+					'layout' => esc_attr( $_POST['layout'] ),
+					'show_image' => intval( $_POST['show_image'] ),
+					'show_rating' => intval( $_POST['show_rating'] ),
+					'category' => esc_attr( $_POST['category'] ),
+					'order_by' => esc_attr( $_POST['order_by'] ),
+					'width' => esc_attr( $_POST['item_width'] ),
+					'text_color' => esc_attr( $_POST['txt_color'] ),
+					'background_color' => esc_attr( $_POST['bg_color'] ),
+					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
+					'padding' => esc_attr( $_POST['item_padding'] ),
+					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
+					'auto_play' => esc_attr( $_POST['auto_play'] ),
+					//'navigation' => esc_attr( $_POST['navigation'] ),
+					//'pagination' => esc_attr( $_POST['pagination'] ),
+					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
+				);
+				
+				// Add shortcode
+				$elm_testimonials->shortcode_generator->update_shortcode( $args );
+				
+				$this->message['update'][] = __( 'Shortcode updated.', 'elm' );
 			}
 		}
 	}
