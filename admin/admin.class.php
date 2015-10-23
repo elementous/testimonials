@@ -90,7 +90,7 @@ class ELM_Testimonials_Admin {
 		
 			if ( empty( $this->message['error'] ) ) {
 				$args = array(
-					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
+					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ),
 					'name' => esc_attr( $_POST['name'] ),
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
@@ -521,7 +521,7 @@ class ELM_Testimonials_Admin {
 		global $post, $pagenow;
 		
 		if ( @get_post_type( $post ) == 'elm_testimonials' || $pagenow == 'admin.php' && isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_shortcodes'  ||
-			isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_add_new_shortcode' ) {
+			isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_add_new_shortcode' || isset( $_GET['page'] ) && $_GET['page'] == 'elm_testimonials_edit_shortcode' ) {
 			wp_register_style( 'elm_testimonials_css', ELM_TESTIMONIALS_URL . '/assets/css/admin.css', false );
 			wp_enqueue_style( 'elm_testimonials_css' );
 			
@@ -531,12 +531,12 @@ class ELM_Testimonials_Admin {
 				return;
 				
 			// Enqueue these scripts for live preview and only for the shortcodes page
-			wp_enqueue_style( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
-			wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
-			wp_enqueue_style( 'elm-font-awesome', ELM_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
+			//wp_enqueue_style( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
+			//wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
+			//wp_enqueue_style( 'elm-font-awesome', ELM_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
 			
-			wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
-			wp_enqueue_script( 'elm-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
+			//wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
+			//wp_enqueue_script( 'elm-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
 		}
 	}
 }

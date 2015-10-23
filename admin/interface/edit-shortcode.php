@@ -28,8 +28,41 @@ $shortcode_settings = $shortcodes[$shortcode_name];
                     <label for="name"><?php _e('Name', 'elm'); ?></label>
                 </th>
                 <td>
-					<input type="hidden" name="sc_name" id="sc-name" value="<?php echo $shortcode_settings['name']; ?>" />
+					<input type="hidden" name="sc_name" id="sc-name" value="<?php echo $shortcode_settings['sc_name']; ?>" />
+					<input type="hidden" name="edit_shortcode" id="" value="true" />
 					<input type="text" name="name" id="name" class="regular-text" value="<?php echo $shortcode_settings['name']; ?>" />
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
+			<tr>
+                <th scope="row">
+                    <label for="layout"><?php _e('Layout', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="layout" id="layout">
+						<?php
+						foreach( elm_admin_get_layout_options() as $key => $value ) :
+							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['layout'], false ) .'>'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
+			<tr class="js-width">
+                <th scope="row">
+                    <label for="item_width"><?php _e('Width', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="item_width" id="item_width">
+					<?php
+						for( $i = 10; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['width'], false ) .'>'. $i .'%</option>';
+						}
+					?>
+					</select>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
@@ -89,38 +122,6 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['order_by'], false ) .'>'. $value .'</option>';
 						endforeach;
 						?>
-					</select>
-					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
-                </td>
-            </tr>
-			<tr>
-                <th scope="row">
-                    <label for="layout"><?php _e('Layout', 'elm'); ?></label>
-                </th>
-                <td>
-					<select name="layout" id="layout">
-						<?php
-						foreach( elm_admin_get_layout_options() as $key => $value ) :
-							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['layout'], false ) .'>'. $value .'</option>';
-						endforeach;
-						?>
-					</select>
-					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
-                </td>
-            </tr>
-			<tr class="js-width">
-                <th scope="row">
-                    <label for="item_width"><?php _e('Width', 'elm'); ?></label>
-                </th>
-                <td>
-					<select name="item_width" id="item_width">
-					<?php
-						for( $i = 10; $i <= 100; $i++ ) {
-							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['width'], false ) .'>'. $i .'%</option>';
-						}
-					?>
 					</select>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>

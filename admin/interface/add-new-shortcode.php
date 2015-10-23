@@ -126,7 +126,7 @@ $settings = elm_testimonials_get_settings();
 						<div id="text_color_picker" class="colorSelector small-text">
 							<div></div>
 						</div>
-							<input class="elm-color small-text elm-typography elm-typography-color" name="text" id="text_color" type="text" value="" />
+							<input class="elm-color small-text elm-typography elm-typography-color" name="txt_color" id="text_color" type="text" value="" />
 					</div>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
@@ -141,7 +141,7 @@ $settings = elm_testimonials_get_settings();
 						<div id="background_color_picker" class="colorSelector small-text">
 							<div></div>
 						</div>
-							<input class="elm-color small-text regular-text" name="background" id="background_color" type="text" value="" />
+							<input class="elm-color small-text regular-text" name="bg_color" id="background_color" type="text" value="" />
 					</div>
 					
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>

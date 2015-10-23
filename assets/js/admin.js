@@ -144,16 +144,28 @@ function elm_testimonials_media_uploader() {
 }
 
 function elm_add_new_shortcode_default() {
-	jQuery( '.js-slide-speed' ).hide();
-	jQuery( '.js-auto-play' ).hide();
-	jQuery( '.js-stop-on-hover' ).hide();
-
-	jQuery( '.add-new-testimonial .js-width td select' ).val('50');
-	jQuery( '.add-new-testimonial .js-text-color td input[type="text"]' ).val('#000000');
-	jQuery( '.add-new-testimonial .js-background-color td input[type="text"]' ).val('#ededed');
-	jQuery( '.add-new-testimonial .js-border-radius td select' ).val('5');
-	jQuery( '.add-new-testimonial .js-padding td select' ).val('5');
-	jQuery( '.add-new-testimonial .js-slide-speed td input[type="text"]' ).val('400');
+	if ( jQuery( 'input[name="edit_shortcode"]' ).val() != 'true' ) {
+		jQuery( '.js-slide-speed' ).hide();
+		jQuery( '.js-auto-play' ).hide();
+		jQuery( '.js-stop-on-hover' ).hide();
+	} else {
+		var layout = jQuery( 'select[name="layout"]' ).val();
+	
+		if ( layout == 'simple_grid'  ) {
+			jQuery( '.js-slide-speed' ).hide();
+			jQuery( '.js-auto-play' ).hide();
+			jQuery( '.js-stop-on-hover' ).hide();
+		}
+	}
+	
+	if ( jQuery( 'input[name="edit_shortcode"]' ).val() != 'true' ) {
+		jQuery( '.add-new-testimonial .js-width td select' ).val('50');
+		jQuery( '.add-new-testimonial .js-text-color td input[type="text"]' ).val('#000000');
+		jQuery( '.add-new-testimonial .js-background-color td input[type="text"]' ).val('#ededed');
+		jQuery( '.add-new-testimonial .js-border-radius td select' ).val('5');
+		jQuery( '.add-new-testimonial .js-padding td select' ).val('5');
+		jQuery( '.add-new-testimonial .js-slide-speed td input[type="text"]' ).val('400');
+	}
 }
 
 function elm_add_new_shortcode() {

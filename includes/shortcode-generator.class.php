@@ -76,15 +76,17 @@ class ELM_Testimonials_Shortcode_Generator {
 		// Check if shortcode does not exist
 	//	if ( ! $this->get_shortcode( $args['sc_name'] ) ) {
 			//$index = strtolower( $args['sc_name'] );
-			if ( $shortcodes[$args['sc_name']] )
-				unset( $shortcodes[$args['sc_name']] );
+			//if ( $shortcodes[$args['sc_name']] )
+				//unset( $shortcodes[$args['sc_name']] );
 			
 			$shortcodes[$args['sc_name']] = $args;
 			
-			//print_r($shortcodes);
-			//exit;
-			
 			update_option( 'elm_testimonials_shortcodes', $shortcodes );
+			
+			//$updt = get_option( 'elm_testimonials_shortcodes' );
+			
+			//print_r( $updt );
+			//exit;
 		//}
 	}
 	

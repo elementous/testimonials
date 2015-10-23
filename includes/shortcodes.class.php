@@ -33,11 +33,11 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				$args['title_of_the_person'] = esc_attr( $_POST['title_of_the_person'] );
 				
 			if ( isset( $_POST['link'] ) ) {
-				if ( !filter_var( $_POST['link'], FILTER_VALIDATE_URL ) ) :
-					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'elm'), strtolower( $settings['forms']['testimonial_form']['link_field_label'] ) );
-				else :
+				//if ( !filter_var( $_POST['link'], FILTER_VALIDATE_URL ) ) :
+					//$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'elm'), strtolower( $settings['forms']['testimonial_form']['link_field_label'] ) );
+				//else :
 					$args['link'] = esc_url( $_POST['link'] );
-				endif;
+				//endif;
 			}
 				
 			if ( isset( $_POST['email'] ) ) {
