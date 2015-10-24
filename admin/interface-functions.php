@@ -101,7 +101,7 @@ function elm_admin_get_cats_select( $selected_value = '' ) {
 	if ( $categories ) {
 		$output .= '<select name="category" id="category">';
 		foreach( $categories as $k => $category ) {
-			$output .= '<option value="'. $category->term_id .'" '. selected( $category->term_id, $selected_value, false ) .'>'. $category->name .'</option>';
+			$output .= '<option value="'. $category->slug .'" '. selected( $category->term_id, $selected_value, false ) .'>'. $category->name .'</option>';
 		}
 		$output .= '</select>';
 	}

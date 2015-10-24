@@ -237,9 +237,6 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			'show_image' => 1,
 			'show_rating' => 1
 		), $atts );*/
-		
-		//if ( $atts['testimonial'] == 'all' ) :
-			$testimonial_query = elm_get_testimonial( 'all', 'publish', esc_attr( $atts['order_by'] ) );
 		//else :
 			//$testimonial_query = elm_get_testimonial( esc_attr( $atts['testimonial'] ), 'publish', esc_attr( $atts['order_by'] ) );
 		//endif;
@@ -248,6 +245,8 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		$args = array();
 		
 		$args = array_merge( $atts, $args );
+		
+		$testimonial_query = elm_get_testimonial( esc_attr( $args['category'] ), esc_attr( $args['order_by'] ) );
 		
 		// Add slider wrapper for specific layouts
 		switch ( $args['layout'] ) {
@@ -306,17 +305,29 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			
 			$output .= '</div>';
 			
+			$owl_arguments = 'singleItem: true,
+				items : 1, 
+				itemsDesktop : true,
+				itemsDesktopSmall : true,
+				itemsTablet: true,
+				itemsMobile : true,
+				loop: true';
+				
+			if ( $args['auto_play'] )
+				$owl_arguments .= ', autoplay:true';
+				
+			if ( $args['stop_on_hover'] )
+				$owl_arguments .= ', autoplayHoverPause:true';
+				
+			if ( $args['slide_speed'] )
+				$owl_arguments .= ', slideSpeed:' . $args['slide_speed'] . ', autoplayTimeout: '. $args['slide_speed'];
+			
 			// Slider JavaScript
 			$output .= '
 			<script type="text/javascript">
 				jQuery( document ).ready(function( $ ) {
 					jQuery(".testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'").owlCarousel({
-						singleItem: true,
-						items : 1, 
-						itemsDesktop : true,
-						itemsDesktopSmall : true,
-						itemsTablet: true,
-						itemsMobile : true
+						'. apply_filters( 'elm_owl_arguments', $owl_arguments ) .'
 					});
 				});
 			</script>
@@ -328,12 +339,29 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			
 			$output .= '</div>';
 			
+			$owl_arguments = 'singleItem: true,
+				items : 2, 
+				itemsDesktop : true,
+				itemsDesktopSmall : true,
+				itemsTablet: true,
+				itemsMobile : true,
+				loop: true';
+				
+			if ( $args['auto_play'] )
+				$owl_arguments .= ', autoplay:true';
+				
+			if ( $args['stop_on_hover'] )
+				$owl_arguments .= ', autoplayHoverPause:true';
+				
+			if ( $args['slide_speed'] )
+				$owl_arguments .= ', slideSpeed:' . $args['slide_speed'] . ', autoplayTimeout: '. $args['slide_speed'];
+			
 			// Slider JavaScript
 			$output .= '
 			<script type="text/javascript">
 				jQuery( document ).ready(function( $ ) {
 					jQuery(".testimonial-'. strtolower( str_replace( ' ', '-', $atts['name'] ) ) .'").owlCarousel({
-						items : 2
+						'. apply_filters( 'elm_owl_arguments', $owl_arguments ) .'
 					});
 				});
 			</script>

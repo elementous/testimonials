@@ -35,7 +35,7 @@ class ELM_Testimonials_Admin {
 		
 			$this->settings['general']['moderate_testimonials'] = intval( @$_POST['moderate_testimonials'] );
 			$this->settings['general']['notifications'] = intval( @$_POST['notifications'] );
-			$this->settings['general']['rich_snippets'] = intval( @$_POST['rich_snippets'] );
+			//$this->settings['general']['rich_snippets'] = intval( @$_POST['rich_snippets'] );
 			
 			$this->settings['general']['notifications_email'] = esc_attr( @$_POST['notifications_email'] );
 			
@@ -89,18 +89,13 @@ class ELM_Testimonials_Admin {
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
-				$category = $_POST['category'];
-				
-				if ( ! isset( $category ) )
-					$category = '';
-			
 				$args = array(
 					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ),
 					'name' => esc_attr( $_POST['name'] ),
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
-					'category' => esc_attr( $_POST['category'] ),
+					'category' => esc_attr( @$_POST['category'] ),
 					'order_by' => esc_attr( $_POST['order_by'] ),
 					'width' => esc_attr( $_POST['item_width'] ),
 					'text_color' => esc_attr( $_POST['txt_color'] ),
@@ -142,7 +137,7 @@ class ELM_Testimonials_Admin {
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
-					'category' => esc_attr( $_POST['category'] ),
+					'category' => esc_attr( @$_POST['category'] ),
 					'order_by' => esc_attr( $_POST['order_by'] ),
 					'width' => esc_attr( $_POST['item_width'] ),
 					'text_color' => esc_attr( $_POST['txt_color'] ),

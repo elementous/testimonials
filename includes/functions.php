@@ -37,14 +37,30 @@ function elm_testimonials_get_rating_html( $rating ) {
   * @param integer $order_by order by
   * @return void
 */
-function elm_get_testimonial( $id, $status, $order_by = 'DESC' ) {
-	global $wpdb;
+function elm_get_testimonial( $category = '', $order_by = 'DESC' ) {
+	/*global $wpdb;
 	
 	if ( $id != 'all' ) :
 		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE ID = {$id} AND post_type = 'elm_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
 	else :
 		$rows = $wpdb->get_results( "SELECT * FROM {$wpdb->posts} WHERE post_type = 'elm_testimonials' AND post_status = '{$status}' ORDER By post_date {$order_by}" );
-	endif;
+	endif;*/
+	$arguments = array(
+		'post_type' => 'elm_testimonials',
+		'order' => $order_by,
+		'orderby' => 'date',
+	);
+
+	if ( !empty( $category ) )
+		$arguments['tax_query'] = array(
+			array(
+				'taxonomy' => 'testimonials_category',
+				'field'    => 'slug',
+				'terms'    => $category
+			)
+		);
+
+	$testimonials = new WP_Query( $arguments );
 	
-	return $rows;
+	return $testimonials->posts;
 }

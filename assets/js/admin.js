@@ -40,6 +40,12 @@ jQuery(document).ready(function(){
 */
 function elm_testimonials_live_preview() {
 	jQuery('.live-preview').hide();
+	
+	if ( jQuery('input[name="name"]').val() ) {
+	
+//	alert(jQuery('input[name="name"]').val());
+		jQuery('.elm_testimonial_sc_name').html(jQuery('input[name="name"]').val());
+	}
 
 	jQuery('input[name="name"]').keyup(function() {
 		var name = jQuery( 'input[name="name"]' ).val();
@@ -48,6 +54,7 @@ function elm_testimonials_live_preview() {
 	});
 	
 	// Handle selects
+	/*
 	jQuery('select[name="layout"], select[name="show_image"], select[name="show_rating"], select[name="order_by"]').change(function() {
 		jQuery('.live-preview').show();
 		
@@ -95,7 +102,7 @@ function elm_testimonials_live_preview() {
 		jQuery.post(ajaxurl, merged_data, function(response) {
 			live_preview_div.html(response.output);
 		}, "json");
-	});
+	});*/
 }
 
 /**

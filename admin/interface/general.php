@@ -48,6 +48,7 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Get notifications about every new testimonial.', 'elm'); ?></p>
                 </td>
             </tr>
+			<!--
 			<tr>
                 <th scope="row">
                     <label for="rich_snippets"><?php _e('Structured data', 'elm'); ?></label>
@@ -60,6 +61,7 @@ $settings = elm_testimonials_get_settings();
 				<p class="description"><?php _e('Enable Rich Snippets (Google, Bing, Yahoo!, Yandex compatible).', 'elm'); ?></p>
 			   </td>
             </tr>
+			-->
         </table>
 
 		<?php wp_nonce_field( 'elm_testimonial_general_page_action', 'elm_testimonial_general_page_nonce' ); ?>
