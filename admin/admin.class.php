@@ -89,6 +89,11 @@ class ELM_Testimonials_Admin {
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
+				$category = $_POST['category'];
+				
+				if ( ! isset( $category ) )
+					$category = '';
+			
 				$args = array(
 					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ),
 					'name' => esc_attr( $_POST['name'] ),
@@ -126,6 +131,11 @@ class ELM_Testimonials_Admin {
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
+				$category = $_POST['category'];
+				
+				if ( ! isset( $category ) )
+					$category = '';
+					
 				$args = array(
 					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
 					'name' => esc_attr( $_POST['name'] ),
@@ -368,7 +378,10 @@ class ELM_Testimonials_Admin {
         $default_settings = array(
 			'version' => ELM_TESTIMONIALS_VERSION,
              'general' => array(
-                 'moderate_testimonials' => 1
+                 'moderate_testimonials' => 1,
+				 'notifications' => 0,
+				 'notifications' => '',
+				 'rich_snippets' => 0
                 ),
 			'forms' => array(
 				'testimonial_form' => array(

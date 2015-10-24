@@ -239,6 +239,8 @@ $settings = elm_testimonials_get_settings();
 	</div>
 	<br />
 	
+	<!--
 	<span class="live-preview"><?php _e('Live preview', 'elm'); ?></span><br />
 	<div id="shortcode-live-preview"></div>
+	-->
 </div>

@@ -148,10 +148,11 @@ class ELM_Testimonials {
                  'name' => __( 'Testimonials', 'elm' ),
                 'singular_name' => __( 'Testimonials', 'elm' ) 
             ),
+			'rewrite' => array( 'slug' => 'testimonial' ),
             'public' => true,
             'has_archive' => false,
             'supports' => array(
-                 'title', 'editor', 'custom-fields'
+                 'title', 'editor'
             ) 
         ) );
 		
@@ -203,6 +204,11 @@ class ELM_Testimonials {
 	function install() {
 		if ( get_option( 'elm_testimonials' ) != 'installed' ) {
 			update_option( 'elm_testimonials', 'installed' );
+			
+			// Flush permalinks
+			global $wp_rewrite;
+		
+			$wp_rewrite->flush_rules( false );
 		}
 	}
 }
