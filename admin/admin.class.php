@@ -126,7 +126,7 @@ class ELM_Testimonials_Admin {
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
-				$category = $_POST['category'];
+				$category = @$_POST['category'];
 				
 				if ( ! isset( $category ) )
 					$category = '';

@@ -171,7 +171,7 @@ function elm_add_new_shortcode_default() {
 		jQuery( '.add-new-testimonial .js-background-color td input[type="text"]' ).val('#ededed');
 		jQuery( '.add-new-testimonial .js-border-radius td select' ).val('5');
 		jQuery( '.add-new-testimonial .js-padding td select' ).val('5');
-		jQuery( '.add-new-testimonial .js-slide-speed td input[type="text"]' ).val('400');
+		jQuery( '.add-new-testimonial .js-slide-speed td input[type="text"]' ).val('4000');
 	}
 }
 
