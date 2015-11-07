@@ -8,13 +8,31 @@
 function elm_admin_get_layout_options() {
 	$options = array(
 		'simple_grid' => __('Grid', 'elm'),
-		'single' => __('Single', 'elm'),
 		'multiple_slides' => __('Slider (Multiple slides)', 'elm'),
 		'one_slide' => __('Slider (One slide)', 'elm')
 	);
 	
 	return $options;
 }
+
+/**
+ * Get author position
+ *
+ * @return array
+*/
+function elm_admin_get_author_pos() {
+	$options = array(
+		'top_left' => __('Top left', 'elm'),
+		'top_center' => __('Top center', 'elm'),
+		'top_right' => __('Top right', 'elm'),
+		'bottom_left' => __('Bottom left', 'elm'),
+		'bottom_center' => __('Bottom center', 'elm'),
+		'bottom_right' => __('Bottom right', 'elm'),
+	);
+	
+	return $options;
+}
+
 
 /**
  * Get show image options

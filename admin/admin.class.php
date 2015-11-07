@@ -95,17 +95,21 @@ class ELM_Testimonials_Admin {
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
+					'author_position' => esc_attr( $_POST['author_position'] ),
 					'category' => esc_attr( @$_POST['category'] ),
 					'order_by' => esc_attr( $_POST['order_by'] ),
 					'width' => esc_attr( $_POST['item_width'] ),
 					'text_color' => esc_attr( $_POST['txt_color'] ),
 					'background_color' => esc_attr( $_POST['bg_color'] ),
+					'quote_background_color' => esc_attr( $_POST['quotebg_color'] ),
 					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
 					'padding' => esc_attr( $_POST['item_padding'] ),
+					'container_top_padding' => esc_attr( $_POST['container_top_padding'] ),
+					'container_bottom_padding' => esc_attr( $_POST['container_bottom_padding'] ),
+					'container_left_padding' => esc_attr( $_POST['container_left_padding'] ),
+					'container_right_padding' => esc_attr( $_POST['container_right_padding'] ),
 					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
 					'auto_play' => esc_attr( $_POST['auto_play'] ),
-					//'navigation' => esc_attr( $_POST['navigation'] ),
-					//'pagination' => esc_attr( $_POST['pagination'] ),
 					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
 				);
 				
@@ -137,17 +141,21 @@ class ELM_Testimonials_Admin {
 					'layout' => esc_attr( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
+					'author_position' => esc_attr( $_POST['author_position'] ),
 					'category' => esc_attr( @$_POST['category'] ),
 					'order_by' => esc_attr( $_POST['order_by'] ),
 					'width' => esc_attr( $_POST['item_width'] ),
 					'text_color' => esc_attr( $_POST['txt_color'] ),
 					'background_color' => esc_attr( $_POST['bg_color'] ),
+					'quote_background_color' => esc_attr( @$_POST['quote_bg_color'] ),
 					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
 					'padding' => esc_attr( $_POST['item_padding'] ),
+					'container_top_padding' => esc_attr( $_POST['container_top_padding'] ),
+					'container_bottom_padding' => esc_attr( $_POST['container_bottom_padding'] ),
+					'container_left_padding' => esc_attr( $_POST['container_left_padding'] ),
+					'container_right_padding' => esc_attr( $_POST['container_right_padding'] ),
 					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
 					'auto_play' => esc_attr( $_POST['auto_play'] ),
-					//'navigation' => esc_attr( $_POST['navigation'] ),
-					//'pagination' => esc_attr( $_POST['pagination'] ),
 					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
 				);
 				
@@ -224,6 +232,8 @@ class ELM_Testimonials_Admin {
 			
 			update_post_meta( $post_id, 'testimonial_rating', $args['rating'] );
 		}
+		
+		update_post_meta( $post_id, 'testimonial_color', $_POST['testimonial_color'] );
 	}
 	
 	/**
@@ -249,6 +259,7 @@ class ELM_Testimonials_Admin {
 		$email = get_post_meta( $post->ID, 'testimonial_email', true );			
 		$image = get_post_meta( $post->ID, 'testimonial_image', true );
 		$rating = get_post_meta( $post->ID, 'testimonial_rating', true );
+		$testimonial_background = @get_post_meta( $post->ID, 'testimonial_color', true );
 		
 		$output = '<div id="elm-testimonials-cf-meta-box">';
 		
@@ -292,6 +303,14 @@ class ELM_Testimonials_Admin {
 				<option value=\"5\" ". selected( 5, $rating, false ) .">5</option>
 			</select><br />";
 		}
+		
+		$output .= "<label for=\"testimonial_color\">". __('Background', 'elm') ."</label><br />";
+		$output .= "<div class=\"elm-ur-color\">
+						<div id=\"testimonial_color_picker\" class=\"colorSelector small-text\">
+							<div></div>
+						</div>
+							<input class=\"elm-color small-text\" name=\"testimonial_color\" id=\"testimonial_color\" type=\"text\" value=\"". $testimonial_background ."\" />
+					</div><br />";
 		
 		$output .= "</div>";
 		

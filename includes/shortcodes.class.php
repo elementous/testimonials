@@ -207,6 +207,8 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		$shortcodes = array();
 		
 		$output = '';
+		
+		$attribute['name'] = strtolower( $attribute['name'] );
 	
 		if ( !empty( $attribute['name'] ) ) {
 			$shortcodes = $elm_testimonials->shortcode_generator->get_shortcode_list();
@@ -272,6 +274,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			$email = get_post_meta( $post->ID, 'testimonial_email', true );			
 			$image = get_post_meta( $post->ID, 'testimonial_image', true );
 			$rating = get_post_meta( $post->ID, 'testimonial_rating', true );
+			$testimonial_background = get_post_meta( $post->ID, 'testimonial_color', true );
 			$testimonial_content = $post->post_content;
 			
 			if ( isset ( $title ) )
@@ -288,13 +291,12 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				$args['image'] =  esc_attr( $image );
 			if ( isset ( $rating ) )
 				$args['rating'] =  (int) $rating;
+			if ( isset ( $testimonial_background ) )
+				$args['testimonial_background'] =  esc_attr( $testimonial_background );
 			if ( isset ( $testimonial_content ) )
 				$args['testimonial'] = esc_attr( $testimonial_content );
 			
 			$args['id'] = (int) $post->ID;
-			//$args['layout'] = $layout;
-			//$args['show_image'] = (int) $attribute['show_image'];
-			//$args['show_rating'] = (int) $attribute['show_rating'];
 			
 			$output .= elm_get_testimonial_layout( $args );
 		}

@@ -99,6 +99,22 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
+			<tr>
+                <th scope="row">
+                    <label for="author-position"><?php _e('Author Position', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="author_position" id="author-position">
+						<?php
+						foreach( elm_admin_get_author_pos() as $key => $value ) :
+							echo '<option value="'. $key .'" '. selected( $key, $shortcode_settings['author_position'], false ) .'>'. $value .'</option>';
+						endforeach;
+						?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
 			<?php if ( elm_admin_get_cats_select() ) : ?>
 			<tr>
                 <th scope="row">
@@ -157,6 +173,21 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
+			<tr>
+                <th scope="row">
+                    <label for="quotebg_color"><?php _e('Quote Background Color', 'elm'); ?></label>
+                </th>
+                <td>
+					<div class="elm-ur-color">
+						<div id="quotebg_color_picker" class="colorSelector small-text">
+							<div></div>
+						</div>
+							<input class="elm-color small-text" name="quotebg_color" id="quotebg_color" type="text" value="<?php echo $shortcode_settings['quote_background_color']; ?>" />
+					</div>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
 			<tr class="js-border-radius">
                 <th scope="row">
                     <label for="item_border_radius"><?php _e('Border Radius', 'elm'); ?></label>
@@ -175,7 +206,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
             </tr>
 			<tr class="js-padding">
                 <th scope="row">
-                    <label for="item_padding"><?php _e('Padding', 'elm'); ?></label>
+                    <label for="item_padding"><?php _e('Quote Padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="item_padding" id="item_padding">
@@ -190,7 +221,74 @@ $shortcode_settings = $shortcodes[$shortcode_name];
                 </td>
             </tr>
 			
+			<tr>
+                <th scope="row">
+                    <label for="container_top_padding"><?php _e('Container Top Padding', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="container_top_padding" id="container_top_padding">
+					<?php
+						for( $i = 0; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['container_top_padding'], false ) .'>'. $i .'px</option>';
+						}
+					?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
 			
+			<tr>
+                <th scope="row">
+                    <label for="container_bottom_padding"><?php _e('Container Bottom Padding', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="container_bottom_padding" id="container_bottom_padding">
+					<?php
+						for( $i = 0; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['container_bottom_padding'], false ) .'>'. $i .'px</option>';
+						}
+					?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
+			
+			<tr>
+                <th scope="row">
+                    <label for="container_left_padding"><?php _e('Container Left Padding', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="container_left_padding" id="container_left_padding">
+					<?php
+						for( $i = 0; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['container_left_padding'], false ) .'>'. $i .'px</option>';
+						}
+					?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
+			
+			<tr>
+                <th scope="row">
+                    <label for="container_right_padding"><?php _e('Container Right Padding', 'elm'); ?></label>
+                </th>
+                <td>
+					<select name="container_right_padding" id="container_right_padding">
+					<?php
+						for( $i = 0; $i <= 100; $i++ ) {
+							echo '<option value="'. $i .'" '. selected( $i, $shortcode_settings['container_left_padding'], false ) .'>'. $i .'px</option>';
+						}
+					?>
+					</select>
+					
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+                </td>
+            </tr>
+
 			<tr class="js-slide-speed">
                 <th scope="row">
                     <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
