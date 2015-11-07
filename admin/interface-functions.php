@@ -113,14 +113,25 @@ function elm_admin_get_stoponhover_options() {
 }
 
 function elm_admin_get_cats_select( $selected_value = '' ) {
-	$categories = get_terms( 'testimonials_category', 'orderby=count&hide_empty=0' );
+
+	$new_category = new stdClass;
+	$new_category->slug = 'all';
+	$new_category->term_id = 'all';
+	$new_category->name = __('All categories', 'elm');
+	
+	$new_categories[] = $new_category;
+	
+	$terms = get_terms( 'testimonials_category', 'orderby=count&hide_empty=0' );
+	
+	$categories = array_merge( $new_categories, $terms );
+	
 	
 	$output = '';
 	
 	if ( $categories ) {
 		$output .= '<select name="category" id="category">';
 		foreach( $categories as $k => $category ) {
-			$output .= '<option value="'. $category->slug .'" '. selected( $category->term_id, $selected_value, false ) .'>'. $category->name .'</option>';
+			$output .= '<option value="'. $category->slug .'" '. selected( $category->slug, $selected_value, false ) .'>'. $category->name .'</option>';
 		}
 		$output .= '</select>';
 	}

@@ -62,6 +62,8 @@ class ELM_Testimonials_Shortcode_Generator {
 			$shortcodes[$index] = $args;
 			
 			update_option( 'elm_testimonials_shortcodes', $shortcodes );
+			
+			return $shortcodes[$index];
 		}
 	}
 	

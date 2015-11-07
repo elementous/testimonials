@@ -22,6 +22,7 @@ $elm_testimonials_admin = new ELM_Testimonials_Admin();
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/functions.php';
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/testimonial-layout.php';
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/testimonials.class.php';
+require ELM_TESTIMONIALS_INCLUDES_PATH . '/widgets.php';
 
 $elm_testimonials = new ELM_Testimonials();
 $elm_testimonials_shortcodes = new ELM_Testimonials_Shortcodes();

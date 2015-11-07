@@ -248,6 +248,9 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		
 		$args = array_merge( $atts, $args );
 		
+		if ( $args['category'] == 'all' )
+			$args['category'] = '';
+		
 		$testimonial_query = elm_get_testimonial( esc_attr( $args['category'] ), esc_attr( $args['order_by'] ) );
 		
 		// Add slider wrapper for specific layouts

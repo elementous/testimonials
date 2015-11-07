@@ -22,6 +22,10 @@ class ELM_Testimonials_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'save_post', array( $this, 'save_post' ) );
 		add_action( 'add_meta_boxes', array( $this, 'custom_fields_meta_box' ) );
+		
+		if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'sc_added' ) {
+			$this->message['update'][] = __( 'Shortcode added.', 'elm' );
+		}
 	}
 	
 	/*
@@ -116,7 +120,8 @@ class ELM_Testimonials_Admin {
 				// Add shortcode
 				$elm_testimonials->shortcode_generator->add_shortcode( $args );
 				
-				$this->message['update'][] = __( 'Shortcode added.', 'elm' );
+				wp_redirect( add_query_arg( array( 'msg' => 'sc_added' ), admin_url( 'admin.php?page=elm_testimonials_shortcodes' ) ) );
+				exit;
 			}
 		}
 		
@@ -191,49 +196,54 @@ class ELM_Testimonials_Admin {
      * @param integer $post_id
      */
 	function save_post( $post_id ) {
-		if ( isset( $_POST['title'] ) ) {
-			$args['title'] = esc_attr( $_POST['title'] );
-			
-			update_post_meta( $post_id, 'testimonial_title', $args['title'] );
-		}
-				
-		if ( isset( $_POST['person_name'] ) ) {
-			$args['name'] = esc_attr( $_POST['person_name'] );
-			
-			update_post_meta( $post_id, 'testimonial_name', $args['name'] );
-		}
-				
-		if ( isset( $_POST['title_of_the_person'] ) ) {
-			$args['title_of_the_person'] = esc_attr( $_POST['title_of_the_person'] );
-			
-			update_post_meta( $post_id, 'testimonial_title_of_the_person', $args['title_of_the_person'] );
-		}
-				
-		if ( isset( $_POST['link'] ) ) {
-			$args['link'] = esc_url( $_POST['link'] );
-			
-			update_post_meta( $post_id, 'testimonial_link', $args['link'] );
-		}
-				
-		if ( isset( $_POST['email'] ) ) {
-			$args['email'] = esc_attr( $_POST['email'] );
-			
-			update_post_meta( $post_id, 'testimonial_email', $args['email'] );
-		}
-			
-		if ( isset( $_POST['image'] ) ) {
-			$args['image'] = esc_attr( $_POST['image'] );
-			
-			update_post_meta( $post_id, 'testimonial_image', $args['image'] );
-		}
-				
-		if ( isset( $_POST['rating'] ) ) {
-			$args['rating'] = (int) $_POST['rating'];
-			
-			update_post_meta( $post_id, 'testimonial_rating', $args['rating'] );
-		}
+	
+		if ( get_post_type( $post_id ) == 'elm_testimonials' ) {
 		
-		update_post_meta( $post_id, 'testimonial_color', $_POST['testimonial_color'] );
+			if ( isset( $_POST['title'] ) ) {
+				$args['title'] = esc_attr( $_POST['title'] );
+				
+				update_post_meta( $post_id, 'testimonial_title', $args['title'] );
+			}
+					
+			if ( isset( $_POST['person_name'] ) ) {
+				$args['name'] = esc_attr( $_POST['person_name'] );
+				
+				update_post_meta( $post_id, 'testimonial_name', $args['name'] );
+			}
+					
+			if ( isset( $_POST['title_of_the_person'] ) ) {
+				$args['title_of_the_person'] = esc_attr( $_POST['title_of_the_person'] );
+				
+				update_post_meta( $post_id, 'testimonial_title_of_the_person', $args['title_of_the_person'] );
+			}
+					
+			if ( isset( $_POST['link'] ) ) {
+				$args['link'] = esc_url( $_POST['link'] );
+				
+				update_post_meta( $post_id, 'testimonial_link', $args['link'] );
+			}
+					
+			if ( isset( $_POST['email'] ) ) {
+				$args['email'] = esc_attr( $_POST['email'] );
+				
+				update_post_meta( $post_id, 'testimonial_email', $args['email'] );
+			}
+				
+			if ( isset( $_POST['image'] ) ) {
+				$args['image'] = esc_attr( $_POST['image'] );
+				
+				update_post_meta( $post_id, 'testimonial_image', $args['image'] );
+			}
+					
+			if ( isset( $_POST['rating'] ) ) {
+				$args['rating'] = (int) $_POST['rating'];
+				
+				update_post_meta( $post_id, 'testimonial_rating', $args['rating'] );
+			}
+			
+			update_post_meta( $post_id, 'testimonial_color', $_POST['testimonial_color'] );
+			
+		}
 	}
 	
 	/**

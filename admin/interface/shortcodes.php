@@ -8,7 +8,6 @@ $settings = elm_testimonials_get_settings();
 ?>
 <div class="wrap testimonials">
 	<?php 
-	$elm_testimonials_admin->messages_html();
 	$elm_testimonials_admin->settings_page_tabs_html();
 	?>
 	<h3><?php _e('Shortcodes', 'elm'); ?></h3>
@@ -18,6 +17,8 @@ $settings = elm_testimonials_get_settings();
 	</div>
 	
 	<?php
+	$elm_testimonials_admin->messages_html();
+	
 	$shortcodes = $elm_testimonials->shortcode_generator->get_shortcode_list();
 			
 	if ( !empty( $shortcodes ) ) {
