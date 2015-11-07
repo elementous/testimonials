@@ -33,12 +33,12 @@ function elm_get_testimonial_layout( $args ) {
 	if ( !empty( $inline_css ) )
 		$style .= 'style="' . $inline_css . '"';
 		
-	if ( !empty( $args['testimonial_background'] ) ) {
-		$inline_container_css .= 'background: '. $args['testimonial_background'] . ';';	
+	if ( !empty( $args['background_color'] ) ) {
+		$inline_container_css .= 'background: '. $args['background_color'] . ';';	
 		
 	} else {
-		if ( !empty( $args['background_color'] ) )
-			$inline_container_css .= 'background: '. $args['background_color'] . ';';	
+		if ( !empty( $args['testimonial_background'] ) )
+			$inline_container_css .= 'background: '. $args['testimonial_background'] . ';';	
 	}
 		
 	if ( !empty( $args['container_top_padding'] ) )
