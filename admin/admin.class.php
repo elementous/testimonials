@@ -152,7 +152,7 @@ class ELM_Testimonials_Admin {
 					'width' => esc_attr( $_POST['item_width'] ),
 					'text_color' => esc_attr( $_POST['txt_color'] ),
 					'background_color' => esc_attr( $_POST['bg_color'] ),
-					'quote_background_color' => esc_attr( @$_POST['quote_bg_color'] ),
+					'quote_background_color' => esc_attr( @$_POST['quotebg_color'] ),
 					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
 					'padding' => esc_attr( $_POST['item_padding'] ),
 					'container_top_padding' => esc_attr( $_POST['container_top_padding'] ),
@@ -241,7 +241,7 @@ class ELM_Testimonials_Admin {
 				update_post_meta( $post_id, 'testimonial_rating', $args['rating'] );
 			}
 			
-			update_post_meta( $post_id, 'testimonial_color', $_POST['testimonial_color'] );
+			update_post_meta( $post_id, 'testimonial_color', @$_POST['testimonial_color'] );
 			
 		}
 	}
