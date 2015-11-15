@@ -52,57 +52,6 @@ function elm_testimonials_live_preview() {
 		
 		jQuery('.elm_testimonial_sc_name').html(name);
 	});
-	
-	// Handle selects
-	/*
-	jQuery('select[name="layout"], select[name="show_image"], select[name="show_rating"], select[name="order_by"]').change(function() {
-		jQuery('.live-preview').show();
-		
-		var nonce = jQuery( 'input[name="elm_add_new_shortcode_page_nonce"]' ).val();
-		var live_preview_div = jQuery( '#shortcode-live-preview' );
-		
-		// Display AJAX loader
-		live_preview_div.html('<div class="elm-loading"></div>');
-		
-		 var data = {
-				action: 'elm_testimonial_live_preview',
-				nonce: nonce
-		};
-	
-		var shortcode_atts = elm_testimonials_shortcode_atts();
-		var atts = jQuery.extend({}, shortcode_atts);
-		
-		var merged_data = jQuery.extend(data, atts);
-			
-		jQuery.post(ajaxurl, merged_data, function(response) {
-			live_preview_div.html(response.output);
-		}, "json");
-	});
-	
-	// Handle inputs
-	jQuery('input[name="color"], input[name="category"]').keyup(function() {
-		jQuery('.live-preview').show();
-		
-		var nonce = jQuery( 'input[name="elm_add_new_shortcode_page_nonce"]' ).val();
-		var live_preview_div = jQuery( '#shortcode-live-preview' );
-		
-		// Display AJAX loader
-		live_preview_div.html('<div class="elm-loading"></div>');
-		
-		 var data = {
-				action: 'elm_testimonial_live_preview',
-				nonce: nonce
-		};
-	
-		var shortcode_atts = elm_testimonials_shortcode_atts();
-		var atts = jQuery.extend({}, shortcode_atts);
-		
-		var merged_data = jQuery.extend(data, atts);
-			
-		jQuery.post(ajaxurl, merged_data, function(response) {
-			live_preview_div.html(response.output);
-		}, "json");
-	});*/
 }
 
 /**

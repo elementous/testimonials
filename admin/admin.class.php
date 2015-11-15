@@ -39,7 +39,6 @@ class ELM_Testimonials_Admin {
 		
 			$this->settings['general']['moderate_testimonials'] = intval( @$_POST['moderate_testimonials'] );
 			$this->settings['general']['notifications'] = intval( @$_POST['notifications'] );
-			//$this->settings['general']['rich_snippets'] = intval( @$_POST['rich_snippets'] );
 			
 			$this->settings['general']['notifications_email'] = esc_attr( @$_POST['notifications_email'] );
 			
@@ -130,8 +129,6 @@ class ELM_Testimonials_Admin {
 			// Validate
 			if ( empty( $_POST['name'] ) ) :
 				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'elm' );
-			//elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( $_POST['name'] ) ) ) :
-				//$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'elm' );
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
@@ -566,14 +563,6 @@ class ELM_Testimonials_Admin {
 		
 			if ( @get_post_type( $post ) == 'elm_testimonials' )
 				return;
-				
-			// Enqueue these scripts for live preview and only for the shortcodes page
-			//wp_enqueue_style( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/css/testimonial.css' );
-			//wp_enqueue_style( 'elm-owl-carousel', ELM_TESTIMONIALS_URL . '/assets/css/owl.carousel.css' );
-			//wp_enqueue_style( 'elm-font-awesome', ELM_TESTIMONIALS_URL . '/assets/css/font-awesome.min.css' );
-			
-			//wp_enqueue_script( 'elm-testimonials', ELM_TESTIMONIALS_URL . '/assets/js/testimonial.js', array( 'jquery' ) );
-			//wp_enqueue_script( 'elm-carousel', ELM_TESTIMONIALS_URL . '/assets/js/owl.carousel.min.js', array( 'jquery' ) );
 		}
 	}
 }

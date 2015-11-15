@@ -6,46 +6,10 @@ class ELM_Testimonials_Shortcode_Generator {
 
 	function __construct() {
 		add_action( 'init', array( $this, 'init' ), 10 );
-		
-		add_action( 'wp_ajax_elm_testimonial_live_preview', array( $this, 'testimonial_live_preview' ) );
 	}
 	
 	function init() {
 
-	}
-	
-	/**
-	 * AJAX Callback
-	 *
-	 * @return void
-     */
-	function testimonial_live_preview() {
-		check_ajax_referer( 'elm_add_new_shortcode_page_action', 'nonce' );
-		
-		global $elm_testimonials;
-		
-		$atts = array();
-		$output = '';
-		
-		// Setup attributes
-		$atts['category'] = esc_attr( $_POST['category'] );
-		$atts['color'] = esc_attr( $_POST['color'] );
-		$atts['layout'] = esc_attr( $_POST['layout'] );
-		$atts['order_by'] = esc_attr( $_POST['order_by'] );
-		$atts['show_image'] = esc_attr( $_POST['show_image'] );
-		$atts['show_rating'] = esc_attr( $_POST['show_rating'] );
-		
-		// Render preview
-		$output .= $elm_testimonials->shortcodes->testimonial_shortcode( $atts );
-		
-		$response = array(
-            'message' => __('OK', 'elm'),
-			'output' => $output
-        );
-		
-		echo json_encode( $response );
-		
-        die;
 	}
 	
 	/**

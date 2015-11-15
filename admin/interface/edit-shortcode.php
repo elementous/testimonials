@@ -347,8 +347,4 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 	</div>
 	<br />
 	
-	<!--
-	<span class="live-preview"><?php _e('Live preview', 'elm'); ?></span><br />
-	<div id="shortcode-live-preview"></div>
-	-->
 </div>
