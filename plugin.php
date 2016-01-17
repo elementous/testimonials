@@ -19,6 +19,7 @@ require ELM_TESTIMONIALS_ADMIN_PATH . '/admin.php';
 	
 $elm_testimonials_admin = new ELM_Testimonials_Admin();
 
+// Load classes and functions
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/functions.php';
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/testimonial-layout.php';
 require ELM_TESTIMONIALS_INCLUDES_PATH . '/testimonials.class.php';
