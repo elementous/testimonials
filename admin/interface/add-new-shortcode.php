@@ -22,12 +22,12 @@ $settings = elm_testimonials_get_settings();
                 <td>
 					<input type="text" name="name" id="name" class="regular-text" value="" />
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Enter the name for this shortcode', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="show-image"><?php _e('Show Image', 'elm'); ?></label>
+                    <label for="show-image"><?php _e('Show image', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="show_image" id="show-image">
@@ -38,12 +38,12 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select option to show or hide author image on testimonials.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="show-rating"><?php _e('Show Rating', 'elm'); ?></label>
+                    <label for="show-rating"><?php _e('Show rating', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="show_rating" id="show-rating">
@@ -54,12 +54,12 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select option to show or to hide rating information on testimonials.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="author-position"><?php _e('Author Position', 'elm'); ?></label>
+                    <label for="author-position"><?php _e('Author position', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="author_position" id="author-position">
@@ -70,7 +70,7 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select position for author information on testimonials.', 'elm'); ?></p>
                 </td>
             </tr>
 			<?php if ( elm_admin_get_cats_select() ) : ?>
@@ -81,13 +81,13 @@ $settings = elm_testimonials_get_settings();
                 <td>
 					<?php echo elm_admin_get_cats_select(); ?>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonials category to use with this shortcode..', 'elm'); ?></p>
                 </td>
             </tr>
 			<?php endif; ?>
 			<tr>
                 <th scope="row">
-                    <label for="order-by"><?php _e('Order By', 'elm'); ?></label>
+                    <label for="order-by"><?php _e('Order by', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="order_by" id="order-by">
@@ -98,7 +98,7 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Sort testimonials by ascending or descending date order.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
@@ -114,7 +114,7 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select layout type to display testimonials.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-width">
@@ -130,12 +130,12 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select percentage width of testimonial form.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-text-color">
                 <th scope="row">
-                    <label for="color"><?php _e('Text Color', 'elm'); ?></label>
+                    <label for="color"><?php _e('Text color', 'elm'); ?></label>
                 </th>
                 <td>
 					<div class="elm-ur-color">
@@ -145,12 +145,12 @@ $settings = elm_testimonials_get_settings();
 							<input class="elm-color small-text elm-typography elm-typography-color" name="txt_color" id="text_color" type="text" value="" />
 					</div>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial text color.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-background-color">
                 <th scope="row">
-                    <label for="background_color"><?php _e('Background Color', 'elm'); ?></label>
+                    <label for="background_color"><?php _e('Background color', 'elm'); ?></label>
                 </th>
                 <td>
 					<div class="elm-ur-color">
@@ -160,12 +160,12 @@ $settings = elm_testimonials_get_settings();
 							<input class="elm-color small-text regular-text" name="bg_color" id="background_color" type="text" value="" />
 					</div>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial form background color', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr>
                 <th scope="row">
-                    <label for="quotebg_color"><?php _e('Quote Background Color', 'elm'); ?></label>
+                    <label for="quotebg_color"><?php _e('Quote background color', 'elm'); ?></label>
                 </th>
                 <td>
 					<div class="elm-ur-color">
@@ -175,12 +175,12 @@ $settings = elm_testimonials_get_settings();
 							<input class="elm-color small-text" name="quotebg_color" id="quotebg_color" type="text" value="" />
 					</div>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select background color for quote section on testimonial form.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-border-radius">
                 <th scope="row">
-                    <label for="item_border_radius"><?php _e('Border Radius', 'elm'); ?></label>
+                    <label for="item_border_radius"><?php _e('Border radius', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="item_border_radius" id="item_border_radius">
@@ -191,12 +191,12 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select border radius value', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-padding">
                 <th scope="row">
-                    <label for="item_padding"><?php _e('Quote Padding', 'elm'); ?></label>
+                    <label for="item_padding"><?php _e('Quote padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="item_padding" id="item_padding">
@@ -207,13 +207,13 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select quote section padding', 'elm'); ?></p>
                 </td>
             </tr>
 			
 			<tr>
                 <th scope="row">
-                    <label for="container_top_padding"><?php _e('Container Top Padding', 'elm'); ?></label>
+                    <label for="container_top_padding"><?php _e('Container top padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="container_top_padding" id="container_top_padding">
@@ -224,13 +224,13 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial form container top padding', 'elm'); ?></p>
                 </td>
             </tr>
 			
 			<tr>
                 <th scope="row">
-                    <label for="container_bottom_padding"><?php _e('Container Bottom Padding', 'elm'); ?></label>
+                    <label for="container_bottom_padding"><?php _e('Container bottom padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="container_bottom_padding" id="container_bottom_padding">
@@ -241,13 +241,13 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial form container bottom padding', 'elm'); ?></p>
                 </td>
             </tr>
 			
 			<tr>
                 <th scope="row">
-                    <label for="container_left_padding"><?php _e('Container Left Padding', 'elm'); ?></label>
+                    <label for="container_left_padding"><?php _e('Container left padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="container_left_padding" id="container_left_padding">
@@ -258,13 +258,13 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial form container left padding', 'elm'); ?></p>
                 </td>
             </tr>
 			
 			<tr>
                 <th scope="row">
-                    <label for="container_right_padding"><?php _e('Container Right Padding', 'elm'); ?></label>
+                    <label for="container_right_padding"><?php _e('Container right padding', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="container_right_padding" id="container_right_padding">
@@ -275,24 +275,24 @@ $settings = elm_testimonials_get_settings();
 					?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Select testimonial form container right padding', 'elm'); ?></p>
                 </td>
             </tr>
 			
 			
 			<tr class="js-slide-speed">
                 <th scope="row">
-                    <label for="slide_speed"><?php _e('Slide Speed', 'elm'); ?></label>
+                    <label for="slide_speed"><?php _e('Slide speed', 'elm'); ?></label>
                 </th>
                 <td>
 					<input type="text" name="slide_speed" id="slide_speed" class="regular-text" value="" />
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Set the speed value for slider.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-auto-play">
                 <th scope="row">
-                    <label for="auto_play"><?php _e('Auto Play', 'elm'); ?></label>
+                    <label for="auto_play"><?php _e('Auto play', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="auto_play">
@@ -303,12 +303,12 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Enable or disable slider autoplay function.', 'elm'); ?></p>
                 </td>
             </tr>
 			<tr class="js-stop-on-hover">
                 <th scope="row">
-                    <label for="stop_on_hover"><?php _e('Stop On Hover', 'elm'); ?></label>
+                    <label for="stop_on_hover"><?php _e('Stop on hover', 'elm'); ?></label>
                 </th>
                 <td>
 					<select name="stop_on_hover">
@@ -319,7 +319,7 @@ $settings = elm_testimonials_get_settings();
 						?>
 					</select>
 					
-					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+					<p class="description"><?php _e('Stop slide when the mouse cursor is over the slide area.', 'elm'); ?></p>
                 </td>
             </tr>
 
