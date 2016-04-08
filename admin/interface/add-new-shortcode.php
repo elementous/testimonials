@@ -210,6 +210,17 @@ $settings = elm_testimonials_get_settings();
 					<p class="description"><?php _e('Select quote section padding', 'elm'); ?></p>
                 </td>
             </tr>
+
+			<tr class="min-height">
+				<th scope="row">
+					<label for="container_min_height"><?php _e('Container min height', 'elm'); ?></label>
+				</th>
+				<td>
+					<input class="" name="container_min_height" id="container_min_height" type="text" value="" /> px
+
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+				</td>
+			</tr>
 			
 			<tr>
                 <th scope="row">

@@ -40,7 +40,10 @@ function elm_get_testimonial_layout( $args ) {
 		if ( !empty( $args['testimonial_background'] ) )
 			$inline_container_css .= 'background: '. $args['testimonial_background'] . ';';	
 	}
-		
+
+	if ( !empty( $args['container_min_height'] ) )
+		$inline_container_css .= 'min-height: '. $args['container_min_height'] . 'px;';
+
 	if ( !empty( $args['container_top_padding'] ) )
 		$inline_container_css .= 'padding-top: '. $args['container_top_padding'] . 'px;';	
 		

@@ -220,6 +220,17 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
+
+			<tr class="min-height">
+				<th scope="row">
+					<label for="container_min_height"><?php _e('Container Min Height', 'elm'); ?></label>
+				</th>
+				<td>
+					<input class="" name="container_min_height" id="container_min_height" type="text" value="<?php echo @$shortcode_settings['container_min_height']; ?>" /> px
+
+					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
+				</td>
+			</tr>
 			
 			<tr>
                 <th scope="row">
