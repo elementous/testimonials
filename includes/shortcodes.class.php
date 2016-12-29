@@ -24,13 +24,13 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			$settings = elm_testimonials_get_settings();
 		
 			if ( isset( $_POST['title'] ) )
-				$args['title'] = esc_attr( $_POST['title'] );
+				$args['title'] = sanitize_text_field( $_POST['title'] );
 				
 			if ( isset( $_POST['person_name'] ) )
-				$args['name'] = esc_attr( $_POST['person_name'] );
+				$args['name'] = sanitize_text_field( $_POST['person_name'] );
 				
 			if ( isset( $_POST['title_of_the_person'] ) )
-				$args['title_of_the_person'] = esc_attr( $_POST['title_of_the_person'] );
+				$args['title_of_the_person'] = sanitize_text_field( $_POST['title_of_the_person'] );
 				
 			if ( isset( $_POST['link'] ) ) {
 				//if ( !filter_var( $_POST['link'], FILTER_VALIDATE_URL ) ) :
@@ -44,7 +44,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 				if ( !filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL ) ) :
 					$testimonial_form_messages['error'][] = sprintf( __('Invalid %s address', 'elm'), strtolower( $settings['forms']['testimonial_form']['email_field_label'] ) );
 				else :
-					$args['email'] = esc_attr( $_POST['email'] );
+					$args['email'] = sanitize_text_field( $_POST['email'] );
 				endif;
 			}
 				
@@ -67,14 +67,14 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			}
 			
 			if ( isset( $_POST['category'] ) && ! empty( $_POST['category'] ) ) {
-				$args['category'] = esc_attr( $_POST['category'] );
+				$args['category'] = sanitize_text_field( $_POST['category'] );
 			}
 				
 			if ( isset( $_POST['rating'] ) )
 				$args['rating'] = (int) $_POST['rating'];
 				
 			if ( isset( $_POST['testimonial'] ) )
-				$args['testimonial'] = esc_attr( $_POST['testimonial'] );
+				$args['testimonial'] = sanitize_text_field( $_POST['testimonial'] );
 	
 			if ( ! @is_array( $testimonial_form_messages['error'] ) ) :
 				if ( !empty( $args ) ) :
@@ -251,7 +251,7 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 		if ( $args['category'] == 'all' )
 			$args['category'] = '';
 		
-		$testimonial_query = elm_get_testimonial( esc_attr( $args['category'] ), esc_attr( $args['order_by'] ) );
+		$testimonial_query = elm_get_testimonial( sanitize_text_field( $args['category'] ), sanitize_text_field( $args['order_by'] ) );
 		
 		// Add slider wrapper for specific layouts
 		switch ( $args['layout'] ) {
@@ -281,23 +281,23 @@ class ELM_Testimonials_Shortcodes extends ELM_Testimonials {
 			$testimonial_content = $post->post_content;
 			
 			if ( isset ( $title ) )
-				$args['title'] =  esc_attr( $title );
+				$args['title'] =  sanitize_text_field( $title );
 			if ( isset ( $name ) )
-				$args['name'] =  esc_attr( $name );
+				$args['name'] =  sanitize_text_field( $name );
 			if ( isset ( $title_of_the_person ) )
-				$args['title_of_the_person'] =  esc_attr( $title_of_the_person );
+				$args['title_of_the_person'] =  sanitize_text_field( $title_of_the_person );
 			if ( isset ( $link ) )
-				$args['link'] =  esc_url( $link );
+				$args['link'] =  sanitize_text_field( $link );
 			if ( isset ( $email ) )
-				$args['email'] =  esc_attr( $email );
+				$args['email'] =  sanitize_text_field( $email );
 			if ( isset ( $image ) )
-				$args['image'] =  esc_attr( $image );
+				$args['image'] =  sanitize_text_field( $image );
 			if ( isset ( $rating ) )
 				$args['rating'] =  (int) $rating;
 			if ( isset ( $testimonial_background ) )
-				$args['testimonial_background'] =  esc_attr( $testimonial_background );
+				$args['testimonial_background'] =  sanitize_text_field( $testimonial_background );
 			if ( isset ( $testimonial_content ) )
-				$args['testimonial'] = esc_attr( $testimonial_content );
+				$args['testimonial'] = sanitize_text_field( $testimonial_content );
 			
 			$args['id'] = (int) $post->ID;
 			

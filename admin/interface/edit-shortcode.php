@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $elm_testimonials, $elm_testimonials_admin;
 
-$shortcode_name = esc_attr( $_GET['elm_edit_shortcode'] );
+$shortcode_name = sanitize_text_field( $_GET['elm_edit_shortcode'] );
 
 $shortcodes = $elm_testimonials->shortcode_generator->get_shortcode_list();
 
@@ -31,7 +31,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 					<input type="hidden" name="sc_name" id="sc-name" value="<?php echo $shortcode_settings['sc_name']; ?>" />
 					<input type="hidden" name="edit_shortcode" id="" value="true" />
 					<input type="text" name="name" id="name" class="regular-text" value="<?php echo $shortcode_settings['name']; ?>" />
-					
+
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>
@@ -47,7 +47,7 @@ $shortcode_settings = $shortcodes[$shortcode_name];
 						endforeach;
 						?>
 					</select>
-					
+
 					<p class="description"><?php _e('Lorem ipsum dolor sit amet.', 'elm'); ?></p>
                 </td>
             </tr>

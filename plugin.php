@@ -8,7 +8,7 @@
   Version: 1.0
 */
 
-define( 'ELM_TESTIMONIALS_VERSION', '1.0b' );
+define( 'ELM_TESTIMONIALS_VERSION', '1.0' );
 define( 'ELM_TESTIMONIALS_PATH', dirname( __FILE__ ) );
 define( 'ELM_TESTIMONIALS_ADMIN_PATH', ELM_TESTIMONIALS_PATH . '/admin' );
 define( 'ELM_TESTIMONIALS_INCLUDES_PATH', ELM_TESTIMONIALS_PATH . '/includes' );

@@ -40,7 +40,7 @@ class ELM_Testimonials_Admin {
 			$this->settings['general']['moderate_testimonials'] = intval( @$_POST['moderate_testimonials'] );
 			$this->settings['general']['notifications'] = intval( @$_POST['notifications'] );
 			
-			$this->settings['general']['notifications_email'] = esc_attr( @$_POST['notifications_email'] );
+			$this->settings['general']['notifications_email'] = sanitize_email( @$_POST['notifications_email'] );
 			
 			$this->save_settings();
 
@@ -61,19 +61,19 @@ class ELM_Testimonials_Admin {
 			$this->settings['forms']['testimonial_form']['testimonial_field_checkbox'] =  intval( @$_POST['testimonial_field_checkbox'] );
 
 			// Labels
-			$this->settings['forms']['testimonial_form']['title_field_label'] =  esc_attr( $_POST['title_field_label'] );
-			$this->settings['forms']['testimonial_form']['name_field_label'] =  esc_attr( $_POST['name_field_label'] );
-			$this->settings['forms']['testimonial_form']['title_of_the_person_field_label'] =  esc_attr( $_POST['title_of_the_person_field_label'] );
-			$this->settings['forms']['testimonial_form']['link_field_label'] =  esc_attr( $_POST['link_field_label'] );
-			$this->settings['forms']['testimonial_form']['email_field_label'] =  esc_attr( $_POST['email_field_label'] );
-			$this->settings['forms']['testimonial_form']['image_field_label'] =  esc_attr( $_POST['image_field_label'] );
-			$this->settings['forms']['testimonial_form']['rating_field_label'] =  esc_attr( $_POST['rating_field_label'] );
-			$this->settings['forms']['testimonial_form']['testimonial_field_label'] =  esc_attr( $_POST['testimonial_field_label'] );
-			$this->settings['forms']['testimonial_form']['submit_label'] =  esc_attr( $_POST['submit_label'] );
+			$this->settings['forms']['testimonial_form']['title_field_label'] =  sanitize_text_field( $_POST['title_field_label'] );
+			$this->settings['forms']['testimonial_form']['name_field_label'] =  sanitize_text_field( $_POST['name_field_label'] );
+			$this->settings['forms']['testimonial_form']['title_of_the_person_field_label'] =  sanitize_text_field( $_POST['title_of_the_person_field_label'] );
+			$this->settings['forms']['testimonial_form']['link_field_label'] =  sanitize_text_field( $_POST['link_field_label'] );
+			$this->settings['forms']['testimonial_form']['email_field_label'] =  sanitize_text_field( $_POST['email_field_label'] );
+			$this->settings['forms']['testimonial_form']['image_field_label'] =  sanitize_text_field( $_POST['image_field_label'] );
+			$this->settings['forms']['testimonial_form']['rating_field_label'] =  sanitize_text_field( $_POST['rating_field_label'] );
+			$this->settings['forms']['testimonial_form']['testimonial_field_label'] =  sanitize_text_field( $_POST['testimonial_field_label'] );
+			$this->settings['forms']['testimonial_form']['submit_label'] =  sanitize_text_field( $_POST['submit_label'] );
 	
 			// Messages
-			$this->settings['forms']['testimonial_form']['success_message'] =  esc_attr( $_POST['success_message'] );
-			$this->settings['forms']['testimonial_form']['error_message'] =  esc_attr( $_POST['error_message'] );
+			$this->settings['forms']['testimonial_form']['success_message'] =  sanitize_text_field( $_POST['success_message'] );
+			$this->settings['forms']['testimonial_form']['error_message'] =  sanitize_text_field( $_POST['error_message'] );
 			
 			$this->save_settings();
 			
@@ -87,34 +87,34 @@ class ELM_Testimonials_Admin {
 			// Validate
 			if ( empty( $_POST['name'] ) ) :
 				$this->message['error'][] = __( 'You cannot leave the name field empty.', 'elm' );
-			elseif ( $elm_testimonials->shortcode_generator->get_shortcode( esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ) ) ) :
+			elseif ( $elm_testimonials->shortcode_generator->get_shortcode( sanitize_text_field( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ) ) ) :
 				$this->message['error'][] = __( 'The shortcode name already exists in the system. Please choose a different one.', 'elm' );
 			endif;
 		
 			if ( empty( $this->message['error'] ) ) {
 				$args = array(
-					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ),
-					'name' => esc_attr( $_POST['name'] ),
-					'layout' => esc_attr( $_POST['layout'] ),
+					'sc_name' => sanitize_text_field( strtolower( str_replace( ' ', '_', $_POST['name'] ) ) ),
+					'name' => sanitize_text_field( $_POST['name'] ),
+					'layout' => sanitize_text_field( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
-					'author_position' => esc_attr( $_POST['author_position'] ),
-					'category' => esc_attr( @$_POST['category'] ),
-					'order_by' => esc_attr( $_POST['order_by'] ),
-					'width' => esc_attr( $_POST['item_width'] ),
-					'text_color' => esc_attr( $_POST['txt_color'] ),
-					'background_color' => esc_attr( $_POST['bg_color'] ),
-					'quote_background_color' => esc_attr( $_POST['quotebg_color'] ),
-					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
-					'padding' => esc_attr( $_POST['item_padding'] ),
-					'container_min_height' => esc_attr( $_POST['container_min_height'] ),
-					'container_top_padding' => esc_attr( $_POST['container_top_padding'] ),
-					'container_bottom_padding' => esc_attr( $_POST['container_bottom_padding'] ),
-					'container_left_padding' => esc_attr( $_POST['container_left_padding'] ),
-					'container_right_padding' => esc_attr( $_POST['container_right_padding'] ),
-					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
-					'auto_play' => esc_attr( $_POST['auto_play'] ),
-					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
+					'author_position' => sanitize_text_field( $_POST['author_position'] ),
+					'category' => sanitize_text_field( @$_POST['category'] ),
+					'order_by' => sanitize_text_field( $_POST['order_by'] ),
+					'width' => sanitize_text_field( $_POST['item_width'] ),
+					'text_color' => sanitize_text_field( $_POST['txt_color'] ),
+					'background_color' => sanitize_text_field( $_POST['bg_color'] ),
+					'quote_background_color' => sanitize_text_field( $_POST['quotebg_color'] ),
+					'border_radius' => sanitize_text_field( $_POST['item_border_radius'] ),
+					'padding' => sanitize_text_field( $_POST['item_padding'] ),
+					'container_min_height' => sanitize_text_field( $_POST['container_min_height'] ),
+					'container_top_padding' => sanitize_text_field( $_POST['container_top_padding'] ),
+					'container_bottom_padding' => sanitize_text_field( $_POST['container_bottom_padding'] ),
+					'container_left_padding' => sanitize_text_field( $_POST['container_left_padding'] ),
+					'container_right_padding' => sanitize_text_field( $_POST['container_right_padding'] ),
+					'slide_speed' => sanitize_text_field( $_POST['slide_speed'] ),
+					'auto_play' => sanitize_text_field( $_POST['auto_play'] ),
+					'stop_on_hover' => sanitize_text_field( $_POST['stop_on_hover'] )
 				);
 				
 				// Add shortcode
@@ -139,28 +139,28 @@ class ELM_Testimonials_Admin {
 					$category = '';
 					
 				$args = array(
-					'sc_name' => esc_attr( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
-					'name' => esc_attr( $_POST['name'] ),
-					'layout' => esc_attr( $_POST['layout'] ),
+					'sc_name' => sanitize_text_field( strtolower( str_replace( ' ', '_', $_POST['sc_name'] ) ) ),
+					'name' => sanitize_text_field( $_POST['name'] ),
+					'layout' => sanitize_text_field( $_POST['layout'] ),
 					'show_image' => intval( $_POST['show_image'] ),
 					'show_rating' => intval( $_POST['show_rating'] ),
-					'author_position' => esc_attr( $_POST['author_position'] ),
-					'category' => esc_attr( @$_POST['category'] ),
-					'order_by' => esc_attr( $_POST['order_by'] ),
-					'width' => esc_attr( $_POST['item_width'] ),
-					'text_color' => esc_attr( $_POST['txt_color'] ),
-					'background_color' => esc_attr( $_POST['bg_color'] ),
-					'quote_background_color' => esc_attr( @$_POST['quotebg_color'] ),
-					'border_radius' => esc_attr( $_POST['item_border_radius'] ),
-					'padding' => esc_attr( $_POST['item_padding'] ),
-					'container_min_height' => esc_attr( $_POST['container_min_height'] ),
-					'container_top_padding' => esc_attr( $_POST['container_top_padding'] ),
-					'container_bottom_padding' => esc_attr( $_POST['container_bottom_padding'] ),
-					'container_left_padding' => esc_attr( $_POST['container_left_padding'] ),
-					'container_right_padding' => esc_attr( $_POST['container_right_padding'] ),
-					'slide_speed' => esc_attr( $_POST['slide_speed'] ),
-					'auto_play' => esc_attr( $_POST['auto_play'] ),
-					'stop_on_hover' => esc_attr( $_POST['stop_on_hover'] )
+					'author_position' => sanitize_text_field( $_POST['author_position'] ),
+					'category' => sanitize_text_field( @$_POST['category'] ),
+					'order_by' => sanitize_text_field( $_POST['order_by'] ),
+					'width' => sanitize_text_field( $_POST['item_width'] ),
+					'text_color' => sanitize_text_field( $_POST['txt_color'] ),
+					'background_color' => sanitize_text_field( $_POST['bg_color'] ),
+					'quote_background_color' => sanitize_text_field( @$_POST['quotebg_color'] ),
+					'border_radius' => sanitize_text_field( $_POST['item_border_radius'] ),
+					'padding' => sanitize_text_field( $_POST['item_padding'] ),
+					'container_min_height' => sanitize_text_field( $_POST['container_min_height'] ),
+					'container_top_padding' => sanitize_text_field( $_POST['container_top_padding'] ),
+					'container_bottom_padding' => sanitize_text_field( $_POST['container_bottom_padding'] ),
+					'container_left_padding' => sanitize_text_field( $_POST['container_left_padding'] ),
+					'container_right_padding' => sanitize_text_field( $_POST['container_right_padding'] ),
+					'slide_speed' => sanitize_text_field( $_POST['slide_speed'] ),
+					'auto_play' => sanitize_text_field( $_POST['auto_play'] ),
+					'stop_on_hover' => sanitize_text_field( $_POST['stop_on_hover'] )
 				);
 				
 				// Add shortcode
@@ -179,7 +179,7 @@ class ELM_Testimonials_Admin {
 	
 		// Delete shortcode
 		if ( isset( $_GET['elm_delete_shortcode'] ) && check_admin_referer( 'elm_delete_shortcode_action' ) ) {
-			$shortcode_name = esc_attr( $_GET['elm_delete_shortcode'] );
+			$shortcode_name = sanitize_text_field( $_GET['elm_delete_shortcode'] );
 		
 			if ( $elm_testimonials->shortcode_generator->get_shortcode( $shortcode_name ) ) :
 				$elm_testimonials->shortcode_generator->delete_shortcode( $shortcode_name );
@@ -199,37 +199,37 @@ class ELM_Testimonials_Admin {
 		if ( get_post_type( $post_id ) == 'elm_testimonials' ) {
 		
 			if ( isset( $_POST['title'] ) ) {
-				$args['title'] = esc_attr( $_POST['title'] );
+				$args['title'] = sanitize_text_field( $_POST['title'] );
 				
 				update_post_meta( $post_id, 'testimonial_title', $args['title'] );
 			}
 					
 			if ( isset( $_POST['person_name'] ) ) {
-				$args['name'] = esc_attr( $_POST['person_name'] );
+				$args['name'] = sanitize_text_field( $_POST['person_name'] );
 				
 				update_post_meta( $post_id, 'testimonial_name', $args['name'] );
 			}
 					
 			if ( isset( $_POST['title_of_the_person'] ) ) {
-				$args['title_of_the_person'] = esc_attr( $_POST['title_of_the_person'] );
+				$args['title_of_the_person'] = sanitize_text_field( $_POST['title_of_the_person'] );
 				
 				update_post_meta( $post_id, 'testimonial_title_of_the_person', $args['title_of_the_person'] );
 			}
 					
 			if ( isset( $_POST['link'] ) ) {
-				$args['link'] = esc_url( $_POST['link'] );
+				$args['link'] = sanitize_text_field( $_POST['link'] );
 				
 				update_post_meta( $post_id, 'testimonial_link', $args['link'] );
 			}
 					
 			if ( isset( $_POST['email'] ) ) {
-				$args['email'] = esc_attr( $_POST['email'] );
+				$args['email'] = sanitize_email( $_POST['email'] );
 				
 				update_post_meta( $post_id, 'testimonial_email', $args['email'] );
 			}
 				
 			if ( isset( $_POST['image'] ) ) {
-				$args['image'] = esc_attr( $_POST['image'] );
+				$args['image'] = sanitize_text_field( $_POST['image'] );
 				
 				update_post_meta( $post_id, 'testimonial_image', $args['image'] );
 			}
